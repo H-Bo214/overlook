@@ -1,6 +1,6 @@
 class Bookings {
-  constructor() {
-
+  constructor(allBookings) {
+    this.allBookings = allBookings;
   }
 }
 

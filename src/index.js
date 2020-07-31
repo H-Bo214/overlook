@@ -1,6 +1,10 @@
 import './css/style.scss';
 import './images/hotel-sign-bw-medium.jpg';
 import domUpdates from '../src/domUpdates';
+import Rooms from './room';
+import Bookings from './booking';
+import Hotel from './hotel';
+import User from './user';
 // import fetches from '../src/fetches';
 
 let loginButton = document.querySelector('.login-button');
@@ -62,21 +66,30 @@ function loadClientPage(clientsData) {
 }
 
 function fetchNeededData(verifiedClient) {
-
 Promise.all([
-  fetch('https://fe-apps.herokuapp.com/api/v1/overlook/1904/rooms/rooms').then(response => response.json()),
-  fetch('https://fe-apps.herokuapp.com/api/v1/overlook/1904/bookings/bookings').then(response => response.json()),
-]).then(data => reassignData(data[0].rooms, data[1].bookings, verifiedClient))
+  fetch('https://fe-apps.herokuapp.com/api/v1/overlook/1904/rooms/rooms')
+  .then(response => response.json()),
+  fetch('https://fe-apps.herokuapp.com/api/v1/overlook/1904/bookings/bookings').
+  then(response => response.json()),
+])
+.then(data => reassignData(data[0].rooms, data[1].bookings, verifiedClient))
 }
 
 function reassignData(allRooms, allBookings, currentClient) {
-  //instantite rooms by passing in all rooms
+  //instantiate rooms by passing in all rooms
+  let rooms = new Rooms(allRooms);
   //instantiate bookings by passing in allBookings
+  let bookings = new Bookings(allBookings);
   // instantiate hotel passing in the new instantiated rooms and bookings.
+  let hotel = new Hotel(rooms, bookings);
   // instantiate a new user with the currentClient and pass in necessary properties. 
-  console.log('allRooms', allRooms);
-  console.log('allBookings', allBookings);
-  console.log('currentClient', currentClient);
+  let currentUser = new User(currentClient, allBookings, allRooms)
+  domUpdates.displayClientPage(currentUser);
+  console.log('currentUserMoneySpent', currentUser.totalMoneySpent);
+  console.log('rooms', rooms);
+  console.log('bookings', bookings);
+  console.log('hotel', hotel);
+  console.log('currentUser', currentUser);
 }
 
 function checkPasswordNumbers(usernameLoginInput) {

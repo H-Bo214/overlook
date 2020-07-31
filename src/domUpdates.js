@@ -28,7 +28,7 @@ let domUpdates = {
     loginParent.classList.add('hide');
     clientHeader.classList.remove('hide');
     clientLandingParent.classList.remove('hide');
-    // console.log('currentClientName', currentClient.name);
+    console.log('currentClientName', currentClient.name);
   },
 
 
