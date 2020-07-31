@@ -1,4 +1,4 @@
-class Room {
+class Rooms {
   constructor() {
 
   }
@@ -12,4 +12,4 @@ class Room {
 
 
 
-export default Room;
+export default Rooms;

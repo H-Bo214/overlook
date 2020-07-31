@@ -1,4 +1,4 @@
-class Booking {
+class Bookings {
   constructor() {
 
   }
@@ -12,4 +12,4 @@ class Booking {
 
 
 
-export default Booking;
+export default Bookings;
