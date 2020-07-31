@@ -1,9 +1,278 @@
-@import 'variables';
 @import 'media-queries';
+@import 'variables';
 
 *,
 *:before,
 *:after {
   box-sizing: border-box;
   font-family: 'DM Sans', sans-serif;
+}
+
+.header {}
+
+.login-parent {}
+
+.login-container {
+  align-items: center;
+  display: flex;
+  height: 100vh;
+  justify-content: center;
+  padding: 8px;
+  width: 100vw;
+}
+
+.login {
+  border: 2px solid black;
+  height: 32em;
+  padding: 2em;
+  width: 21em;
+}
+
+h1 {
+  font-size: 2em;
+  text-align: center;
+  margin-top: 15px;
+}
+
+h2 {
+  padding: 0 .5em;
+}
+
+.login-form {
+  display: flex;
+  flex-direction: column;
+}
+
+.label {
+  font-weight: 700;
+  margin-bottom: 5px;
+}
+
+.username-login-input,
+.password-login-input {
+  height: 43px;
+  margin-bottom: 2em;
+  font-size: 20px;
+}
+
+.login-error-msg {
+  color: #fd1d1d;
+  font-size: 14px;
+  margin-top: 0;
+  text-align: center;
+}
+
+.login-button {
+  cursor: pointer;
+  padding: 15px 71px;
+  margin-left: 33px;
+  margin-top: 6px;
+  font-size: 21px;
+  background: #fff;
+  border-radius: 3px;
+  color: black;
+}
+
+.login-button:hover {
+  background: #87a7c7;
+  transition: 1.2s ease;
+  opacity: 70%;
+}
+
+header {
+  display: flex;
+  border: 2px solid black;
+  justify-content: space-between;
+  padding: 0 35px;
+}
+
+.client-landing-parent,
+.manager-landing-parent {
+  display: flex;
+  justify-content: space-around;
+
+}
+
+.left-aside,
+.right-section {
+  border: 2px solid black;
+  margin: 5px;
+  text-align: center;
+}
+
+
+.rooms-available,
+.current-occupancy {
+  display: flex;
+  margin: 20px;
+  justify-content: center;
+}
+
+ul {
+  list-style-type: none;
+  padding: 15px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.client-available-rooms {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-around;
+  overflow-x: scroll;
+  overflow: scroll;
+  width: auto;
+  height: 20em;
+}
+
+.client-prior-stays-section {
+  display: flex;
+  flex-direction: column;
+  border: 1px solid black;
+  border-radius: 20px;
+  overflow-x: scroll;
+  overflow: scroll;
+  width: auto;
+  height: 17em;
+  padding: 5px;
+}
+
+.client-available-rooms ul li {
+  margin: 4px;
+}
+
+.client-book-room-button,
+.client-search-room-button,
+.delete-booking-button,
+.manager-client-search-button {
+  cursor: pointer;
+  margin: 20px 20px;
+  font-size: 21px;
+  background: #fff;
+  border-radius: 3px;
+  color: black;
+}
+
+.hide {
+  display: none;
+}
+
+.right-section {
+  width: 30em;
+  display: flex;
+  flex-direction: column;
+  flex-grow: 2;
+  height: 100vh;
+}
+
+.left-aside {
+  flex-grow: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  height: 100vh;
+}
+
+span {
+  font-weight: bold;
+}
+
+.no-rooms-available-message {
+  color: #DC143C;
+}
+
+.client-search-section,
+.manager-booking-section {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  border: 1px solid black;
+  border-radius: 20px;
+  padding: 10px;
+}
+
+
+.manager-client-search-parent,
+.manager-booking-parent {
+  display: flex;
+  flex-direction: column;
+  padding: 1em;
+}
+
+.client-date-selection,
+.booking-id-input {
+  width: 40%;
+}
+
+.single-room-details-card,
+.single-prior-stay-card {
+  border: 1px solid black;
+  border-radius: 20px;
+  margin: 6px;
+}
+
+.filter-rooms-parent {
+  display: flex;
+  flex-direction: column;
+  padding: 1em;
+  border: 1px solid black;
+  border-radius: 20px;
+}
+
+.client-selection-section,
+.manager-selection-section {
+  display: flex;
+  justify-content: space-evenly;
+  margin-bottom: 5em;
+}
+
+.delete-booking-parent {
+  border: 1px solid black;
+  width: 60%;
+  border-radius: 20px;
+}
+
+.client-info-section {
+  border: 1px solid black;
+  width: 50%;
+  border-radius: 20px;
+  height: 17em;
+}
+
+.client-details-section {
+  display: flex;
+  justify-content: space-evenly;
+}
+
+.client-overview li {
+  padding: 4px;
+}
+
+.client-search-parent {
+  display: flex;
+  flex-direction: column;
+  padding: 1em;
+  border: 1px solid black;
+  border-radius: 20px;
+}
+
+.client-selection-section {
+  display: flex;
+  justify-content: space-evenly;
+  margin: 1em;
+
+}
+
+.client-search {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.client-past-bookings,
+.client-todays-bookings,
+.client-upcoming-bookings {
+  display: flex;
+  justify-content: center;
 }

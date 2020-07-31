@@ -1,16 +1,214 @@
 <!DOCTYPE html>
 <html lang="en-US">
-  <head>
-    <meta charset="UTF-8" name="description" content="A hotel booking website for the Overlook Hotel">
-    <title>Overlook</title>
-    <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;700&display=swap" rel="stylesheet">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-  </head>
-  <body>
-    <h1>Welcome to Overlook</h1>
-
-    <img src="./images/turing-logo.png" alt="turing logo" height="100px" width="100px">
-
-    <!-- Do not include the index.js or main.bundle.js file here - it is done automatically by the webpack server -->
-  </body>
+<head>
+  <meta charset="UTF-8" name="description" content="A hotel booking website for the Overlook Hotel">
+  <title>Overlook</title>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;700&display=swap" rel="stylesheet">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+</head>
+<body>
+  <main>
+    <!-- hide the header when logging in keyword 'hide' -->
+    <header class="header ">
+      <h1 class="welcome-message">Welcome to Overlook</h1>
+      <!-- <h2 class="welcome-message"></h2> -->
+    </header>
+    <!-- Login Page -->
+    <section class="login-parent ">
+      <section class="login-container">
+        <section class="login">
+          <h1>Overlook Hotel</h1>
+          <form class="login-form">
+            <label class="label" for="login-username">Username:</label>
+            <input class="username-login-input" type="text" name="username" maxlength="30">
+            <label class="label" for="login-password">Password:</label>
+            <input class="password-login-input" type="password" name="password" size="30">
+          </form>
+          <!-- hide the 🔺Check your Password & Username </p> initially logging in 'hide' -->
+          <p class="login-error-msg hide ">🔺Check your Password & Username</p>
+          <button class="login-button" type="button" name="login">Login</button>
+        </section>
+      </section>
+    </section>
+    <!--Client landing page -->
+    <!-- hide the <section class="client-landing-parent hide"> </p>  and the client welcome header initially when logging in as a manager -->
+    <header class="header ">
+      <h1 class="client-welcome-message">Overlook Hotel</h1>
+      <h2>Hello, Dirty Steve</h2>
+    </header>
+    <section class="client-landing-parent  ">
+      <aside class="left-aside">
+        <h2>My Past Bookings</h2>
+        <section class="client-past-bookings">
+          <ul>
+            <label class="label client-past-dates" for="date">Date:</label>
+            <li>0000/00/00</li>
+          </ul>
+          <ul>
+            <label class="label client-past-room" for="room">Room:</label>
+            <li>15</li>
+          </ul>
+        </section>
+        <h2>Today's Bookings</h2>
+        <section class="client-todays-bookings">
+          <ul>
+            <label class="label todays-booking-date" for="date">Date:</label>
+            <li>1111/11/11</li>
+          </ul>
+          <ul>
+            <label class="label todays-booking-room" for="duration">Room:</label>
+            <li>10</li>
+          </ul>
+        </section>
+        <h2>Upcoming Bookings</h2>
+        <section class="client-upcoming-bookings">
+          <ul>
+            <label class="label upcoming-booking-date" for="date">Date:</label>
+            <li>2020/09/30</li>
+          </ul>
+          <ul>
+            <label class="label upcoming-booking-room" for="duration">Room:</label>
+            <li>10</li>
+          </ul>
+        </section>
+        <h2>Total spent for your stays</h2>
+        <section>
+          <p>$1000</p>
+        </section>
+      </aside>
+      <section class="right-section">
+        <section class="client-selection-section">
+          <section class="filter-rooms-parent">
+            <h3>Filter by room type</h3>
+            <ul>
+              <li>
+                <input type="checkbox" class="checked-tag">
+                <label>suite</label>
+              </li>
+              <li>
+                <input type="checkbox" class="checked-tag">
+                <label>residential suite</label>
+              </li>
+              <li>
+                <input type="checkbox" class="checked-tag">
+                <label>single room</label>
+              </li>
+              <li>
+                <input type="checkbox" class="checked-tag">
+                <label>junior suite</label>
+              </li>
+            </ul>
+          </section>
+          <section class="client-search-parent">
+            <h2>Search for availability</h2>
+            <section class="client-search">
+              <label class="label" for="date">Please enter a date:</label>
+              <input class="client-date-selection" type="text" placeholder="YYYY/MM/DD" size="10" maxlength="10">
+              <button class="client-search-room-button" type="button" name="Search available rooms">Search available
+                rooms</button>
+            </section>
+            <!-- will need to hide/unhide error message based on availability -->
+            <p class="no-rooms-available-message">🔺 We apologize, there are no rooms available this date. Please enter
+              a different date.</p>
+          </section>
+        </section>
+        <h2>Available Rooms</h2>
+        <section class="client-available-rooms">
+          <ul class="single-room-details-card">
+            <li><span>Room #: </span>22</li>
+            <li><span>Room Type: </span>residential suite</li>
+            <li><span>Has bidet: </span>true</li>
+            <li><span>Bed size: </span>full</li>
+            <li><span>Cost per night: </span>$400</li>
+            <button class="client-book-room-button" type="button" name="Book Now">Book Now</button>
+          </ul>
+        </section>
+      </section>
+    </section>
+    <!-- Manager landing page -->
+    <!-- hide the  <section class="manager-landing-parent hide"> when logging in as a customer -->
+    <header class="header">
+      <h1 class="manager-admin">Overlook Hotel</h1>
+      <h2>Overlook Management System</h2>
+    </header>
+    <section class="manager-landing-parent">
+      <aside class="left-aside">
+        <h2>Room Availability</h2>
+        <section class="rooms-available">
+          <p>There are currently 20 rooms available</p>
+        </section>
+        <h2>Current Occupancy</h2>
+        <section class="current-occupancy">
+          <p>We are currently at 70% occupancy</p>
+        </section>
+        <h2>Total revenue today</h2>
+        <section>
+          <p>$1000</p>
+        </section>
+        <section class="delete-booking-parent">
+          <h2>Delete a booking</h2>
+          <form class="delete-booking-section">
+            <label class="label" for="Booking Id">Booking ID:</label>
+            <input class="booking-id-input" type="text" placeholder="Enter booking Id">
+            <button class="delete-booking-button" type="button" name="Delete booking">Delete Booking</button>
+          </form>
+        </section>
+      </aside>
+      <section class="right-section">
+        <section class="manager-selection-section">
+          <section class="manager-client-search-parent">
+            <h2>Client Search</h2>
+            <form class="client-search-section">
+              <label class="label" for="Client Name">Client name:</label>
+              <input class="manager-client-name-input" type="text" placeholder="Enter name">
+              <button class="manager-client-search-button" type="button" name="Search">Search client</button>
+            </form>
+          </section>
+          <section class="manager-booking-parent">
+            <h2>Add a booking</h2>
+            <form class="manager-booking-section">
+              <label class="label" for="Client Id">Client Id:</label>
+              <input class="manager-client-id-input" type="number" placeholder="Enter id">
+              <label class="label" for="Booking date">Booking date:</label>
+              <input class="manager-client-date-input" type="text" placeholder="YYYY/MM/DD">
+              <label class="label" for="Room number">Room number:</label>
+              <input class="manager-client-room-input" type="number" placeholder="00">
+              <button class="manager-client-search-button" type="button" name="Add booking">Add booking</button>
+            </form>
+          </section>
+        </section>
+        <h2>Client History</h2>
+        <section class="client-details-section">
+          <section class="client-prior-stays-section">
+            <h4>Stay history</h4>
+            <ul class="single-prior-stay-card">
+              <li><span>Date: </span>2020/12/27</li>
+              <li><span>Room #: </span>22</li>
+            </ul>
+            <ul class="single-prior-stay-card">
+              <li><span>Date: </span>2020/12/27</li>
+              <li><span>Room #: </span>22</li>
+            </ul>
+            <ul class="single-prior-stay-card">
+              <li><span>Date: </span>2020/12/27</li>
+              <li><span>Room #: </span>22</li>
+            </ul>
+            <ul class="single-prior-stay-card">
+              <li><span>Date: </span>2020/12/27</li>
+              <li><span>Room #: </span>22</li>
+            </ul>
+          </section>
+          <section class="client-info-section">
+            <h3>Client Details</h3>
+            <ul class="client-overview">
+              <li><span>Client id: </span>34</li>
+              <li><span>Client Name: </span>Dirty Steve</li>
+              <li><span>Total spent: </span>$10000</li>
+            </ul>
+          </section>
+        </section>
+      </section>
+    </section>
+  </main>
+</body>
 </html>
