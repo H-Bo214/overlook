@@ -27,7 +27,17 @@ class User {
     return myRooms;
   };
 
-
+  getMyBookings() {
+    let myStays = this.allClientBookings.reduce((allStays, booking) => {
+      let stays = {}
+      stays.date = booking.date;
+      stays.roomNumber = booking.roomNumber;
+      allStays.push(stays)
+      return allStays;
+    }, []);
+    console.log('myStays', myStays);
+    return myStays;
+  };
 
 
 
@@ -36,7 +46,8 @@ class User {
 
   
 
-
+// iterate thru allClientBookings has access to the date and roomNumber
+// iterate over clientRoomsStayedIn
 
 
 

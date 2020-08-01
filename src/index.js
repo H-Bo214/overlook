@@ -10,7 +10,7 @@ import User from './user';
 let loginButton = document.querySelector('.login-button');
 
 loginButton.addEventListener('click', userLogin);
-loginButton.addEventListener('keydown', userLogin);
+// loginButton.addEventListener('keydown', userLogin);
 
 
 
@@ -26,45 +26,28 @@ function loginErrors() {
     loginErrorMessage.classList.remove('hide')
   }
 }
-
+//This function fetches all users
 function userLogin() {
-  // let usernameLoginInput = document.querySelector('.username-login-input');
-  // let passwordLoginInput = document.querySelector('.password-login-input');
   fetch('https://fe-apps.herokuapp.com/api/v1/overlook/1904/users/users')
   .then(response => response.json())
   .then(clientsData => loadClientPage(clientsData))
-  .catch(errors => loginErrors(errors))
+  .catch(errors => console.log(errors))
+};
 
-  
-}
-
-// function loadClientPage(allClients)
 function loadClientPage(clientsData) {
+  console.log('clientsData', clientsData);
   let usernameLoginInput = document.querySelector('.username-login-input');
   let passwordLoginInput = document.querySelector('.password-login-input');
-
+  loginErrors()
   if (usernameLoginInput.value === 'manager' && passwordLoginInput.value === 'overlook2020') {
     domUpdates.displayManagerPage()
   } else if (usernameLoginInput.value.includes('customer') && passwordLoginInput.value === 'overlook2020') {
-    // console.log('usernameLoginInput.value', usernameLoginInput.value)
     let clientID = checkPasswordNumbers(usernameLoginInput.value)
     let verifiedClient = checkPassword(clientID, clientsData);
-    console.log('verifiedClient', verifiedClient);
     fetchNeededData(verifiedClient)
-    // domUpdates.displayClientPage(verifiedClient)
   }
-    // for (let i = 1; clientsData.length; i++) {
-    //   if (usernameLoginInput.value === `customer${i}` && passwordLoginInput.value === 'overlook2020') {
-    //     let currentClient = clientsData[i - 1] 
-    //     // domUpdates.displayClientPage(currentClient);
-    //     domUpdates.displayClientPage(currentClient);
-  
-    //   }
-    // }
-    
-  
 }
-
+// This function fetches the current clients room and booking data
 function fetchNeededData(verifiedClient) {
 Promise.all([
   fetch('https://fe-apps.herokuapp.com/api/v1/overlook/1904/rooms/rooms')
@@ -76,24 +59,14 @@ Promise.all([
 }
 
 function reassignData(allRooms, allBookings, currentClient) {
-  //instantiate rooms by passing in all rooms
   let rooms = new Rooms(allRooms);
-  //instantiate bookings by passing in allBookings
   let bookings = new Bookings(allBookings);
-  // instantiate hotel passing in the new instantiated rooms and bookings.
   let hotel = new Hotel(rooms, bookings);
-  // instantiate a new user with the currentClient and pass in necessary properties. 
   let currentUser = new User(currentClient, allBookings, allRooms)
   domUpdates.displayClientPage(currentUser);
-  console.log('currentUserMoneySpent', currentUser.totalMoneySpent);
-  console.log('rooms', rooms);
-  console.log('bookings', bookings);
-  console.log('hotel', hotel);
-  console.log('currentUser', currentUser);
 }
 
 function checkPasswordNumbers(usernameLoginInput) {
-  // console.log('usernameLoginInput', usernameLoginInput);
   let id1;
   usernameLoginInput = usernameLoginInput.split('')
   let two = usernameLoginInput[usernameLoginInput.length - 2]

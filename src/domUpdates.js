@@ -28,21 +28,64 @@ let domUpdates = {
     loginParent.classList.add('hide');
     clientHeader.classList.remove('hide');
     clientLandingParent.classList.remove('hide');
-    console.log('currentClientName', currentClient.name);
+    this.loadClientData(currentClient)
+    // console.log('currentClientName', currentClient.name);
   },
 
 
+
+  displayClientTotalSpent(currentClient) {
+    let clientTotalSpent = document.querySelector('.client-total-spent');
+    let clientTotalMoneySpent = currentClient.getTotalMoneySpent();
+    clientTotalSpent.innerHTML = `<p class= "client-total">$${clientTotalMoneySpent}</p>`;
+  },
   
+  displayWelcomeMessage(currentClient) {
+    let welcomeMessage = document.querySelector('.client-welcome-message');
+    let firstName = currentClient.name.split(" ")[0];
+    welcomeMessage.innerHTML = `Welcome ${firstName}`;
+  },
+
+  displayClientBookings(currentClient) {
+    let myBookings = document.querySelector('.client-past-bookings');
+    let bookings = currentClient.getMyBookings()
+    bookings.forEach(booking => {
+      let bookingDetails = 
+      ` <ul class= "past-bookings">
+          <label class="label client-past-dates" for="date">Date:</label>
+          <li>${booking.date}</li>
+          <label class="label client-past-dates" for="room number">Room Number:</label>
+          <li>${booking.roomNumber}</li>
+        </ul>
+      `
+      myBookings.insertAdjacentHTML("beforeend", bookingDetails)
+
+    })
+  },
+
+
+  loadClientData(currentClient) {
+    this.displayClientTotalSpent(currentClient);
+    this.displayWelcomeMessage(currentClient);
+    this.displayClientBookings(currentClient);
+    }, 
+
+
+
+
+
+//   <ul>
+//   <label class="label client-past-room" for="room">Room:</label>
+//   <li>${booking.roomNumber}</li>
+// </ul>`
+
 
 }
 
 
 
 
-// Promise.all([
-//   fetch('https://fe-apps.herokuapp.com/api/v1/overlook/1904/rooms/rooms').then(response => response.json()),
-//   fetch('https://fe-apps.herokuapp.com/api/v1/overlook/1904/bookings/bookings').then(response => response.json()),
-// ]).then(data => reassignData(data[0].rooms, data[1].bookings, currentClient))
+
 
 
 
