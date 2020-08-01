@@ -46,8 +46,6 @@ class User {
 
   
 
-// iterate thru allClientBookings has access to the date and roomNumber
-// iterate over clientRoomsStayedIn
 
 
 

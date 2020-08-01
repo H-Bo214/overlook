@@ -127,11 +127,11 @@ ul {
 .client-available-rooms {
   display: flex;
   flex-wrap: wrap;
-  justify-content: space-around;
+  justify-content: space-evenly;
   overflow-x: scroll;
   overflow: scroll;
   width: auto;
-  height: 20em;
+  height: 53%;
 }
 
 .client-prior-stays-section {

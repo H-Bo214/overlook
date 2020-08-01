@@ -15,10 +15,9 @@ let domUpdates = {
   
 
 
-  // clientLogin(allClientData)
-  // will need to invoke displayPastBooking, displayPresentBooking, displayUpcomingBooking, displayTotalAmountSpent, 
+ 
 
-  // displayClientPage(currentClient)
+
   displayClientPage(currentClient) {
     let loginHeader = document.querySelector('.login-header');
     let loginParent = document.querySelector('.login-parent');
@@ -63,6 +62,23 @@ let domUpdates = {
     })
   },
 
+  displayAvailableRoomsFromSearch(availableRooms) {
+    let clientAvailableRooms = document.querySelector('.client-available-rooms')
+    availableRooms.forEach(room => {
+      let availableRoomDetails = 
+      ` <ul class="single-room-details-card" id="${room.number}">
+          <li><span>Room #: </span>${room.number}</li>
+          <li><span>Room Type: </span>${room.roomType}</li>
+          <li><span>Has bidet: </span>${room.bidet}</li>
+          <li><span>Bed size: </span>${room.bedSize}</li>
+          <li><span>Number of beds: </span>${room.numBeds}</li>
+          <li><span>Cost per night: </span>${room.costPerNight}</li>
+      <button class="client-book-room-button" type="button" name="Book Now">Book Now</button>
+    </ul>`
+      clientAvailableRooms.insertAdjacentHTML("beforeend", availableRoomDetails)
+    })
+
+  }, 
 
   loadClientData(currentClient) {
     this.displayClientTotalSpent(currentClient);
@@ -70,7 +86,7 @@ let domUpdates = {
     this.displayClientBookings(currentClient);
     }, 
 
-
+  
 
 
 
