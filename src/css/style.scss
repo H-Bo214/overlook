@@ -10,7 +10,15 @@
 
 .header {}
 
+
+
 .login-parent {}
+
+.login-header {}
+
+.manager-header {}
+
+.client-header {}
 
 .login-container {
   align-items: center;
@@ -134,7 +142,7 @@ ul {
   overflow-x: scroll;
   overflow: scroll;
   width: auto;
-  height: 17em;
+  height: 80%;
   padding: 5px;
 }
 
@@ -159,7 +167,7 @@ ul {
 }
 
 .right-section {
-  width: 30em;
+  width: 60%;
   display: flex;
   flex-direction: column;
   flex-grow: 2;
@@ -172,6 +180,7 @@ ul {
   flex-direction: column;
   align-items: center;
   height: 100vh;
+  width: 40%;
 }
 
 span {
@@ -275,4 +284,26 @@ span {
 .client-upcoming-bookings {
   display: flex;
   justify-content: center;
+}
+
+.client-total {
+  font-size: 20px;
+}
+
+.client-past-bookings  {
+  display: flex;
+  flex-wrap: wrap;
+  border: 1px solid black;
+  justify-content: space-evenly;
+  border-radius: 20px;
+  overflow-x: scroll;
+  overflow: scroll;
+  width: 40%;
+  height: 75%;
+ 
+}
+
+.past-bookings {
+  border: 1px solid black;
+  border-radius: 20px;
 }

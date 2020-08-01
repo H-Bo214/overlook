@@ -1,6 +1,6 @@
-class Booking {
-  constructor() {
-
+class Bookings {
+  constructor(allBookings) {
+    this.allBookings = allBookings;
   }
 }
 
@@ -12,4 +12,4 @@ class Booking {
 
 
 
-export default Booking;
+export default Bookings;
