@@ -6,13 +6,12 @@
 *:after {
   box-sizing: border-box;
   font-family: 'DM Sans', sans-serif;
+  // color: #fff;
 }
 
 .header {}
 
-
 .need-date-message {
-
 }
 .login-parent {}
 
@@ -21,6 +20,22 @@
 .manager-header {}
 
 .client-header {}
+
+// body {
+//   background-image: url("../images/hotel-red.jpg");
+//   // background-repeat: no-repeat;
+//   object-fit: contain;
+//   opacity: 0.8;
+// }
+
+html { 
+  background: url(../images/hotel-red.jpg) no-repeat center center fixed; 
+  -webkit-background-size: cover;
+  -moz-background-size: cover;
+  -o-background-size: cover;
+  background-size: cover;
+  
+}
 
 .login-container {
   align-items: center;
@@ -32,10 +47,14 @@
 }
 
 .login {
-  border: 2px solid black;
+  border: 2px solid #fff;
   height: 32em;
   padding: 2em;
   width: 21em;
+  opacity: 0.80;
+  @include iphone-size {
+    width: 23em;
+  }
 }
 
 h1 {
@@ -46,6 +65,11 @@ h1 {
 
 h2 {
   padding: 0 .5em;
+  text-align: center;
+  @include iphone-size {
+    // text-align: center;
+    font-size: 20px;
+  }
 }
 
 .login-form {
@@ -55,7 +79,7 @@ h2 {
 
 .label {
   font-weight: 700;
-  margin-bottom: 5px;
+  margin-bottom: 10px;
 }
 
 .username-login-input,
@@ -91,24 +115,34 @@ h2 {
 
 header {
   display: flex;
-  border: 2px solid black;
+  // border: 2px solid black;
   justify-content: space-between;
   padding: 0 35px;
+  margin-bottom: 6px;
+  @include iphone-size {
+    padding: 0;
+    width: 22.8em;
+    margin-left: 3px;
+  }
 }
 
-.client-landing-parent,
+
 .manager-landing-parent {
   display: flex;
   justify-content: space-around;
 
 }
 
-.left-aside,
-.right-section {
-  border: 2px solid black;
-  margin: 5px;
-  text-align: center;
+.client-landing-parent {
+  display: flex;
+  justify-content: space-around;
+  @include iphone-size {
+    flex-direction: column;
+  }
 }
+
+
+
 
 
 .rooms-available,
@@ -134,6 +168,9 @@ ul {
   overflow: scroll;
   width: auto;
   height: 53%;
+  @include ipad-pro-size {
+    height: 70%;
+  }
 }
 
 .client-prior-stays-section {
@@ -164,25 +201,59 @@ ul {
   color: black;
 }
 
+.client-book-room-button {
+  padding: 10px;
+}
+
+.client-search-room-button {
+  padding: 9px;
+  border-radius: 5px;
+  margin-top: 25px;
+}
+
 .hide {
   display: none;
 }
 
 .right-section {
+  border: 2px solid black;
   width: 60%;
   display: flex;
   flex-direction: column;
   flex-grow: 2;
-  height: 100vh;
+  height: 88vh;
+  @include ipad-pro-size {
+    height: 92vh;
+  }
+  @include iphone-size {
+    width: 22.5em;
+  }
 }
+
+
+// .right-section {
+//   border: 2px solid black;
+//   margin: 5px;
+//   text-align: center;
+ 
+// }
 
 .left-aside {
   flex-grow: 1;
   display: flex;
   flex-direction: column;
   align-items: center;
-  height: 100vh;
+  height: 88vh;
   width: 40%;
+  border: 2px solid black;
+  text-align: center;
+  @include ipad-pro-size {
+    height: 92vh;
+    padding-top: 1em;
+  }
+  @include iphone-size {
+    width: 22.5em;
+  }
 }
 
 span {
@@ -213,14 +284,32 @@ span {
 
 .client-date-selection,
 .booking-id-input {
-  width: 40%;
+  width: 53%;
 }
 
-.single-room-details-card,
+.client-date-selection {
+ @include ipad-size {
+  width: 55%;
+  padding: 7px;
+ }
+}
+
 .single-prior-stay-card {
   border: 1px solid black;
   border-radius: 20px;
   margin: 6px;
+}
+
+.single-room-details-card {
+  border: 1px solid black;
+  border-radius: 20px;
+  margin: 6px;
+  @include ipad-pro-size {
+    width: 17em;
+  }
+  @include iphone-size {
+
+  }
 }
 
 .filter-rooms-parent {
@@ -229,6 +318,13 @@ span {
   padding: 1em;
   border: 1px solid black;
   border-radius: 20px;
+  @include ipad-pro-size {
+    height: 68%;
+  }
+  @include ipad-size {
+    height: 68%;
+    padding: 0 30px 30px 30px;
+  }
 }
 
 .client-selection-section,
@@ -266,13 +362,19 @@ span {
   padding: 1em;
   border: 1px solid black;
   border-radius: 20px;
+  @include ipad-size {
+    padding: 0;
+    margin-top: 40px;
+  }
 }
 
 .client-selection-section {
   display: flex;
   justify-content: space-evenly;
   margin: 1em;
-
+@include ipad-size {
+  flex-direction: column;
+}
 }
 
 .client-search {
@@ -290,6 +392,12 @@ span {
 
 .client-total {
   font-size: 20px;
+  @include ipad-pro-size {
+    font-size: 34px;
+  }
+  @include iphone-size {
+  margin: 6px;
+  }
 }
 
 .client-past-bookings  {
@@ -302,18 +410,41 @@ span {
   overflow: scroll;
   width: 40%;
   height: 75%;
- 
+  @include ipad-pro-size {
+    margin-bottom: 2em;
+    height: 77%;
+    width: 18em;
+  }
+  @include ipad-size {
+    margin-bottom: 2em;
+    width: 15em;
+    height: 56%;
+  }
 }
 
 .past-bookings {
   border: 1px solid black;
   border-radius: 20px;
+  @include ipad-pro-size {
+    width: 13em;
+  }
 }
 
 .post-modal {
-  // height: 800px;
   width: 400px;
   border: 1px solid black;
   border-radius: 20px;
   position: absolute;
 }
+
+.filter-input {
+  padding: 9px;
+}
+
+.welcome-message {
+  @include iphone-size {
+    font-size: 24px;
+    padding-left: 50px;
+  }
+}
+

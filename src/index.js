@@ -1,11 +1,12 @@
 import './css/style.scss';
 import './images/hotel-sign-bw-medium.jpg';
+import './images/hotel-red.jpg';
 import domUpdates from '../src/domUpdates';
 import Rooms from './room';
 import Bookings from './booking';
 import Hotel from './hotel';
 import User from './user';
-// import fetches from '../src/fetches';
+
 let rooms, bookings, hotel, currentUser;
 // date shows up with no 0 in the front of single digit months and date. Will need to add
 // in for formatting. 
@@ -13,9 +14,7 @@ let today = new Date()
 let todaysDate = today.getFullYear()+'/'+(today.getMonth()+1)+'/'+today.getDate();
 let loginButton = document.querySelector('.login-button');
 let rightSection = document.querySelector('.right-section')
-// let clientDateValue = document.querySelector('.client-date-selection')
 
-window.onload = 
 rightSection.addEventListener('click', function() {
   clientButtonHandler(event)
 });
@@ -108,13 +107,11 @@ function clientButtonHandler(event) {
   }
   if (event.target.closest(".client-available-rooms")) {
       let bookId = event.target.closest(".client-book-room-button").getAttribute("data-id");
-       currentUser.postBooking(bookId, clientDate)
-    }
+      //  currentUser.postBooking(bookId, clientDate)
+  }
   if (event.target.closest('.post-modal')) {
     let postModalParent = document.querySelector('.post-modal')
-    // let postModal = event.target.closest(".close-modal")
     postModalParent.classList.add('hide');
-    // console.log('postModal', postModal);
   }
 }
 
