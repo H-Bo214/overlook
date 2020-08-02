@@ -46,7 +46,7 @@
     <!-- hide the <section class="client-landing-parent hide"> </p>  and the client welcome header initially when logging in as a manager -->
     <header class="client-header hide">
       <h1>Overlook Hotel</h1>
-      <h2 class="client-welcome-message">Hello, Dirty Steve</h2>
+      <h2 class="client-welcome-message"></h2>
     </header>
     <section class="client-landing-parent hide">
       <aside class="left-aside">
@@ -61,49 +61,31 @@
         <section class="client-selection-section">
           <section class="filter-rooms-parent">
             <h3>Filter by room type</h3>
-            <ul>
-              <li>
-                <input type="checkbox" class="checked-tag">
-                <label>suite</label>
-              </li>
-              <li>
-                <input type="checkbox" class="checked-tag">
-                <label>residential suite</label>
-              </li>
-              <li>
-                <input type="checkbox" class="checked-tag">
-                <label>single room</label>
-              </li>
-              <li>
-                <input type="checkbox" class="checked-tag">
-                <label>junior suite</label>
-              </li>
-            </ul>
+            <select class="filter-input" type="">
+              <option value="none">none</option>
+              <option>residential suite</option>
+              <option>suite</option>
+              <option>single room</option>
+              <option>junior suite</option>
+            </select>
           </section>
           <section class="client-search-parent">
             <h2>Search for availability</h2>
             <section class="client-search">
               <label class="label" for="date">Please enter a date:</label>
-              <input class="client-date-selection" type="text" placeholder="YYYY/MM/DD" size="10" maxlength="10">
+              <input class="client-date-selection" id ="client-date" type="text" placeholder="YYYY/MM/DD" size="10" maxlength="10">
               <button class="client-search-room-button" type="button" name="Search available rooms">Search available
                 rooms</button>
             </section>
             <!-- will need to hide/unhide error message based on availability -->
-            <p class="no-rooms-available-message">🔺 We apologize, there are no rooms available this date. Please enter
+            <p class="no-rooms-available-message hide">🔺 We apologize, there are no rooms available this date. Please enter
               a different date.</p>
           </section>
         </section>
+        <p class="need-date-message hide">🔺 Please enter a date.</p>
         <h2>Available Rooms</h2>
-        <section class="client-available-rooms">
-          <ul class="single-room-details-card">
-            <li><span>Room #: </span>22</li>
-            <li><span>Room Type: </span>residential suite</li>
-            <li><span>Has bidet: </span>true</li>
-            <li><span>Bed size: </span>full</li>
-            <li><span>Cost per night: </span>$400</li>
-            <button class="client-book-room-button" type="button" name="Book Now">Book Now</button>
-          </ul>
-        </section>
+        <section class="post-modal hide"></section>
+        <section class="client-available-rooms"></section>
       </section>
     </section>
 

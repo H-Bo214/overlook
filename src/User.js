@@ -1,3 +1,4 @@
+import domUpdates from '../src/domUpdates'
 class User {
   constructor(currentClient, allBookings, allRooms) {
     this.id = currentClient.id;
@@ -39,6 +40,23 @@ class User {
     return myStays;
   };
 
+  postBooking(room, dates) {
+    let roomNumbers = parseInt(room)
+    fetch('https://fe-apps.herokuapp.com/api/v1/overlook/1904/bookings/bookings', {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json'
+      },
+      body: JSON.stringify({
+        userID: this.id,
+        date: dates,
+        roomNumber: roomNumbers
+      })
+    })
+      .then(response => response.json())
+      .then(data => domUpdates.postModal(data))
+      .catch(err => console.error(err))
+  }
 
 
 
@@ -46,8 +64,6 @@ class User {
 
   
 
-// iterate thru allClientBookings has access to the date and roomNumber
-// iterate over clientRoomsStayedIn
 
 
 

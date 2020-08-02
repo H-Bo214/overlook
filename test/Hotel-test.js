@@ -7,7 +7,7 @@ describe('Hotel', function() {
  let bookings, allBookings, rooms, allRooms, hotel
 
   beforeEach(function() {
-    rooms = [{
+    allRooms = [{
       "number": 15,
       "roomType": "residential suite",
       "bidet": true,
@@ -40,16 +40,24 @@ describe('Hotel', function() {
       "costPerNight": 429.44
     },
     {
-      "number": 12,
+      "number": 13,
       "roomType": "single room",
       "bidet": true,
       "bedSize": "queen",
       "numBeds": 2,
       "costPerNight": 340.17
     },
+    {
+      "number": 6,
+      "roomType": "junior suite",
+      "bidet": true,
+      "bedSize": "king",
+      "numBeds": 2,
+      "costPerNight": 340.17
+    },
   ];
 
-  bookings = [{
+  allBookings = [{
     "id": "5fwrgu4i7k55hl6sz",
     "userID": 9,
     "date": "2020/04/22",
@@ -81,22 +89,54 @@ describe('Hotel', function() {
     "id": "5fwrgu4i7k55hl6t8",
     "userID": 1,
     "date": "2020/02/05",
-    "roomNumber": 12,
+    "roomNumber": 13,
     "roomServiceCharges": []
   },
+
+
+
+
+// Booked room for today
+  {
+    "id": "2w2w2w2w2w2w2w2w2w",
+    "userID": 1,
+    "date": "2020/08/01",
+    "roomNumber": 6,
+    "roomServiceCharges": []
+  }
 ];
 
-  allRooms = new Rooms(rooms)
-  allBookings = new Bookings(bookings)
-  hotel = new Hotel(allRooms, allBookings)
-  });
+  rooms = new Rooms(allRooms)
+  bookings = new Bookings(allBookings)
+  hotel = new Hotel(rooms, bookings)
+});
 
   it.only('should be a function', function() {
     expect(Hotel).to.be.a('function');
   });
 
   it.only('should be an instance of Hotel', function() {
+    // console.log('hotel', hotel);
     expect(hotel).to.be.an.instanceof(Hotel);
   });
+
+  it.only('should find booked rooms by date', function() {
+    expect(hotel.findBookedRoomsByDate("2020/08/01")).to.deep.equal([6])
+    // expect(hotel.findBookedRoomsByDate("2020/02/16")).to.deep.equal([7])
+  })
+
+  it.only('should find available rooms by date', function() {
+    expect(hotel.findAvailableRoomsByDate("2020/08/01")).to.deep.equal([allRooms[0], allRooms[1], allRooms[2], allRooms[3], allRooms[4]])
+  })
+
+  // it.only('should filter rooms by room type', function() {
+  //   expect(hotel.filterRoomsByType(rooms)).to.deep.equal('hello')
+  // });
+
+  it.only('should filter rooms by filter tag', function() {
+    expect(hotel.filterRoomsByType("single room")).to.deep.equal([allRooms[2], allRooms[3], allRooms[4]])
+  })
+
+
 
 });

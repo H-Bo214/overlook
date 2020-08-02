@@ -13,12 +13,6 @@ let domUpdates = {
     managerLandingParent.classList.remove('hide');
   },
   
-
-
-  // clientLogin(allClientData)
-  // will need to invoke displayPastBooking, displayPresentBooking, displayUpcomingBooking, displayTotalAmountSpent, 
-
-  // displayClientPage(currentClient)
   displayClientPage(currentClient) {
     let loginHeader = document.querySelector('.login-header');
     let loginParent = document.querySelector('.login-parent');
@@ -63,6 +57,39 @@ let domUpdates = {
     })
   },
 
+  noDateEnteredMessage() {
+    let clientDateInput = document.getElementById('client-date')
+    let needDateMessage = document.querySelector('.need-date-message');
+    needDateMessage.classList.remove('hide');
+    clientDateInput.addEventListener('focus', (event) => {
+      needDateMessage.classList.add('hide');
+    })
+  },
+
+  displayAvailableRoomsFromSearch(availableRooms) {
+    if (availableRooms.length === 0) {
+      let noRoomsMsg = document.querySelector('.no-rooms-available-message');
+      noRoomsMsg.classList.remove('hide')
+    } else {
+   
+      let clientAvailableRooms = document.querySelector('.client-available-rooms')
+      clientAvailableRooms.innerText = '';
+      availableRooms.forEach(room => {
+        let availableRoomDetails = 
+        ` <ul class="single-room-details-card" id=${room.number}>
+            <li><span>Room #: </span>${room.number}</li>
+            <li><span>Room Type: </span>${room.roomType}</li>
+            <li><span>Has bidet: </span>${room.bidet}</li>
+            <li><span>Bed size: </span>${room.bedSize}</li>
+            <li><span>Number of beds: </span>${room.numBeds}</li>
+            <li><span>Cost per night: </span>${room.costPerNight}</li>
+        <button class="client-book-room-button" data-id="${room.number}" type="button" name="Book Now">Book Now</button>
+      </ul>`
+        clientAvailableRooms.insertAdjacentHTML("beforeend", availableRoomDetails)
+      })
+      
+    }
+  }, 
 
   loadClientData(currentClient) {
     this.displayClientTotalSpent(currentClient);
@@ -70,14 +97,27 @@ let domUpdates = {
     this.displayClientBookings(currentClient);
     }, 
 
+    postModal(postResult) {
+      let postModal = document.querySelector('.post-modal');
+      postModal.classList.remove('hide');
+      postModal.innerHTML = `
+      <div>  
+      <p>Thank you for booking!</p>
+        <p class="close-modal" data-id="close">X</p>
+      </div>
+        `
+
+    },
+
+    closeModal() {
+      
+      
+    }
 
 
 
 
-//   <ul>
-//   <label class="label client-past-room" for="room">Room:</label>
-//   <li>${booking.roomNumber}</li>
-// </ul>`
+
 
 
 }

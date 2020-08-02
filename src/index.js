@@ -1,20 +1,25 @@
 import './css/style.scss';
 import './images/hotel-sign-bw-medium.jpg';
+import './images/hotel-red.jpg';
 import domUpdates from '../src/domUpdates';
 import Rooms from './room';
 import Bookings from './booking';
 import Hotel from './hotel';
 import User from './user';
-// import fetches from '../src/fetches';
 
+let rooms, bookings, hotel, currentUser;
+// date shows up with no 0 in the front of single digit months and date. Will need to add
+// in for formatting. 
+let today = new Date() 
+let todaysDate = today.getFullYear()+'/'+(today.getMonth()+1)+'/'+today.getDate();
 let loginButton = document.querySelector('.login-button');
+let rightSection = document.querySelector('.right-section')
+
+rightSection.addEventListener('click', function() {
+  clientButtonHandler(event)
+});
 
 loginButton.addEventListener('click', userLogin);
-// loginButton.addEventListener('keydown', userLogin);
-
-
-
-
 
 function loginErrors() {
   let usernameLoginInput = document.querySelector('.username-login-input');
@@ -35,7 +40,7 @@ function userLogin() {
 };
 
 function loadClientPage(clientsData) {
-  console.log('clientsData', clientsData);
+  // console.log('clientsData', clientsData);
   let usernameLoginInput = document.querySelector('.username-login-input');
   let passwordLoginInput = document.querySelector('.password-login-input');
   loginErrors()
@@ -59,10 +64,14 @@ Promise.all([
 }
 
 function reassignData(allRooms, allBookings, currentClient) {
-  let rooms = new Rooms(allRooms);
-  let bookings = new Bookings(allBookings);
-  let hotel = new Hotel(rooms, bookings);
-  let currentUser = new User(currentClient, allBookings, allRooms)
+   rooms = new Rooms(allRooms);
+  //  console.log('roomsInstantiation', rooms);
+   bookings = new Bookings(allBookings);
+  //  console.log('bookingsInstantiation', bookings);
+   hotel = new Hotel(rooms, bookings);
+  //  console.log('hotelInstantiation', hotel);
+   currentUser = new User(currentClient, allBookings, allRooms)
+  //  console.log('date', date);
   domUpdates.displayClientPage(currentUser);
 }
 
@@ -90,3 +99,31 @@ function checkPassword(clientID, clientsData) {
   let correctUser = clientsData.users.find(user => user.id === clientID)
   return correctUser
 }
+
+function clientButtonHandler(event) {
+  let clientDate = document.getElementById('client-date').value;
+  if (event.target.classList.contains('client-search-room-button')) {
+    checkInputValue(clientDate)
+  }
+  if (event.target.closest(".client-available-rooms")) {
+      let bookId = event.target.closest(".client-book-room-button").getAttribute("data-id");
+      //  currentUser.postBooking(bookId, clientDate)
+  }
+  if (event.target.closest('.post-modal')) {
+    let postModalParent = document.querySelector('.post-modal')
+    postModalParent.classList.add('hide');
+  }
+}
+
+function checkInputValue(dateValue) {
+  if (dateValue === '') {
+    domUpdates.noDateEnteredMessage()
+  } else {
+    let filterSelection  = document.querySelector('.filter-input')
+    let availableRooms = hotel.findAvailableRoomsByDate(dateValue, filterSelection.value);     
+    domUpdates.displayAvailableRoomsFromSearch(availableRooms)
+    availableRooms = [];
+  }
+}
+
+
