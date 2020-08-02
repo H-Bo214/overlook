@@ -2,7 +2,7 @@ class Hotel {
   constructor(allRooms, allBookings) {
     this.allRooms = allRooms;
     this.allBookings = allBookings;
-  }
+  };
 
   // have test
   findBookedRoomsByDate(date) {
@@ -36,7 +36,7 @@ class Hotel {
       }
       return availableRooms;
     }, []);
-  }
+  };
  //have test
   findRoomsWithoutFilter(date) {
     let allRooms = this.allRooms.allRooms;
@@ -47,16 +47,8 @@ class Hotel {
       }
       return availableRooms;
     }, []);
-  }
+  };
 
-}
-
-
-
-
-
-
-
-
+};
 
 export default Hotel;

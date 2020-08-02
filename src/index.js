@@ -1,5 +1,4 @@
 import './css/style.scss';
-import './images/hotel-sign-bw-medium.jpg';
 import './images/hotel-red.jpg';
 import domUpdates from '../src/domUpdates';
 import RoomRepo from './Room-repo';
@@ -69,7 +68,7 @@ function reassignData(allRooms, allBookings, currentClient) {
    hotel = new Hotel(rooms, bookings);
   //  console.log('hotelInstantiation', hotel);
    currentUser = new User(currentClient, allBookings, allRooms)
-  //  console.log('date', date);
+   console.log('currentUser', currentUser);
   domUpdates.displayClientPage(currentUser);
 }
 

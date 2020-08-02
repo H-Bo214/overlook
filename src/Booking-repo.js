@@ -3,27 +3,6 @@ class BookingRepo {
     this.allBookings = allBookings;
   }
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 }
 
 export default BookingRepo;
