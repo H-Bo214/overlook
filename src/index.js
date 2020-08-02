@@ -1,9 +1,8 @@
 import './css/style.scss';
-import './images/hotel-sign-bw-medium.jpg';
 import './images/hotel-red.jpg';
 import domUpdates from '../src/domUpdates';
-import Rooms from './room';
-import Bookings from './booking';
+import RoomRepo from './Room-repo';
+import BookingRepo from './Booking-repo';
 import Hotel from './hotel';
 import User from './user';
 
@@ -62,14 +61,14 @@ Promise.all([
 }
 
 function reassignData(allRooms, allBookings, currentClient) {
-   rooms = new Rooms(allRooms);
+   rooms = new RoomRepo(allRooms);
   //  console.log('roomsInstantiation', rooms);
-   bookings = new Bookings(allBookings);
+   bookings = new BookingRepo(allBookings);
   //  console.log('bookingsInstantiation', bookings);
    hotel = new Hotel(rooms, bookings);
   //  console.log('hotelInstantiation', hotel);
    currentUser = new User(currentClient, allBookings, allRooms)
-  //  console.log('date', date);
+   console.log('currentUser', currentUser);
   domUpdates.displayClientPage(currentUser);
 }
 

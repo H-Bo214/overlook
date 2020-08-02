@@ -7,7 +7,7 @@ class User {
     this.clientRoomsStayedIn = this.findMyRooms(allRooms)
     this.totalMoneySpent = this.getTotalMoneySpent();
   }
-
+  // has test
   getTotalMoneySpent() {
     let totalSpent = this.clientRoomsStayedIn.reduce((roomCost, room) => {
       roomCost += room.costPerNight;
@@ -15,7 +15,7 @@ class User {
     }, 0);
     return totalSpent.toFixed(2);
   };
-
+  // has test
   findMyRooms(allRooms) {
     let myRooms = allRooms.reduce((allMyRooms, room) => {
       this.allClientBookings.forEach(booking => {
@@ -27,7 +27,7 @@ class User {
     }, []);
     return myRooms;
   };
-
+  // has test
   getMyBookings() {
     let myStays = this.allClientBookings.reduce((allStays, booking) => {
       let stays = {}
@@ -36,37 +36,27 @@ class User {
       allStays.push(stays)
       return allStays;
     }, []);
-    console.log('myStays', myStays);
     return myStays;
   };
 
   postBooking(room, dates) {
     let roomNumbers = parseInt(room)
     fetch('https://fe-apps.herokuapp.com/api/v1/overlook/1904/bookings/bookings', {
-      method: 'POST',
-      headers: {
-        'Content-Type': 'application/json'
-      },
-      body: JSON.stringify({
-        userID: this.id,
-        date: dates,
-        roomNumber: roomNumbers
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json'
+        },
+        body: JSON.stringify({
+          userID: this.id,
+          date: dates,
+          roomNumber: roomNumbers
+        })
       })
-    })
       .then(response => response.json())
       .then(data => domUpdates.postModal(data))
       .catch(err => console.error(err))
   }
 
-
-
 };
-
-  
-
-
-
-
-
 
 export default User;
