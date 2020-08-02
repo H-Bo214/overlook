@@ -61,7 +61,14 @@
         <section class="client-selection-section">
           <section class="filter-rooms-parent">
             <h3>Filter by room type</h3>
-            <ul>
+          <select class="filter-input" type="">
+            <option value="none">none</option>
+            <option>residential suite</option>
+            <option>suite</option>
+            <option>single room</option>
+            <option>junior suite</option>
+          </select>
+            <!-- <ul>
               <li>
                 <input type="checkbox" class="checked-tag">
                 <label>suite</label>
@@ -78,7 +85,7 @@
                 <input type="checkbox" class="checked-tag">
                 <label>junior suite</label>
               </li>
-            </ul>
+            </ul> -->
           </section>
           <section class="client-search-parent">
             <h2>Search for availability</h2>
@@ -89,21 +96,14 @@
                 rooms</button>
             </section>
             <!-- will need to hide/unhide error message based on availability -->
-            <p class="no-rooms-available-message">🔺 We apologize, there are no rooms available this date. Please enter
+            <p class="no-rooms-available-message hide">🔺 We apologize, there are no rooms available this date. Please enter
               a different date.</p>
           </section>
         </section>
+        <p class="need-date-message hide">🔺 Please enter a date.</p>
         <h2>Available Rooms</h2>
-        <section class="client-available-rooms">
-          <!-- <ul class="single-room-details-card">
-            <li><span>Room #: </span>22</li>
-            <li><span>Room Type: </span>residential suite</li>
-            <li><span>Has bidet: </span>true</li>
-            <li><span>Bed size: </span>full</li>
-            <li><span>Cost per night: </span>$400</li>
-            <button class="client-book-room-button" type="button" name="Book Now">Book Now</button>
-          </ul> -->
-        </section>
+        <section class="post-modal hide"></section>
+        <section class="client-available-rooms"></section>
       </section>
     </section>
 

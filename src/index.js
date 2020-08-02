@@ -15,16 +15,12 @@ let loginButton = document.querySelector('.login-button');
 let rightSection = document.querySelector('.right-section')
 // let clientDateValue = document.querySelector('.client-date-selection')
 
+window.onload = 
 rightSection.addEventListener('click', function() {
   clientButtonHandler(event)
 });
 
 loginButton.addEventListener('click', userLogin);
-
-
-
-
-
 
 function loginErrors() {
   let usernameLoginInput = document.querySelector('.username-login-input');
@@ -106,10 +102,31 @@ function checkPassword(clientID, clientsData) {
 }
 
 function clientButtonHandler(event) {
-  event.preventDefault();
+  let clientDate = document.getElementById('client-date').value;
   if (event.target.classList.contains('client-search-room-button')) {
-    let clientDate = document.getElementById('client-date').value;
-    let availableRooms = hotel.findAvailableRoomsByDate(clientDate);     
-    domUpdates.displayAvailableRoomsFromSearch(availableRooms)
+    checkInputValue(clientDate)
+  }
+  if (event.target.closest(".client-available-rooms")) {
+      let bookId = event.target.closest(".client-book-room-button").getAttribute("data-id");
+       currentUser.postBooking(bookId, clientDate)
+    }
+  if (event.target.closest('.post-modal')) {
+    let postModalParent = document.querySelector('.post-modal')
+    // let postModal = event.target.closest(".close-modal")
+    postModalParent.classList.add('hide');
+    // console.log('postModal', postModal);
   }
 }
+
+function checkInputValue(dateValue) {
+  if (dateValue === '') {
+    domUpdates.noDateEnteredMessage()
+  } else {
+    let filterSelection  = document.querySelector('.filter-input')
+    let availableRooms = hotel.findAvailableRoomsByDate(dateValue, filterSelection.value);     
+    domUpdates.displayAvailableRoomsFromSearch(availableRooms)
+    availableRooms = [];
+  }
+}
+
+

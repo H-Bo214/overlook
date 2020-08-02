@@ -49,7 +49,7 @@ describe('Hotel', function() {
     },
     {
       "number": 6,
-      "roomType": "single room",
+      "roomType": "junior suite",
       "bidet": true,
       "bedSize": "king",
       "numBeds": 2,
@@ -128,4 +128,15 @@ describe('Hotel', function() {
   it.only('should find available rooms by date', function() {
     expect(hotel.findAvailableRoomsByDate("2020/08/01")).to.deep.equal([allRooms[0], allRooms[1], allRooms[2], allRooms[3], allRooms[4]])
   })
+
+  // it.only('should filter rooms by room type', function() {
+  //   expect(hotel.filterRoomsByType(rooms)).to.deep.equal('hello')
+  // });
+
+  it.only('should filter rooms by filter tag', function() {
+    expect(hotel.filterRoomsByType("single room")).to.deep.equal([allRooms[2], allRooms[3], allRooms[4]])
+  })
+
+
+
 });

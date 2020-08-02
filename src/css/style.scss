@@ -11,7 +11,9 @@
 .header {}
 
 
+.need-date-message {
 
+}
 .login-parent {}
 
 .login-header {}
@@ -306,4 +308,12 @@ span {
 .past-bookings {
   border: 1px solid black;
   border-radius: 20px;
+}
+
+.post-modal {
+  // height: 800px;
+  width: 400px;
+  border: 1px solid black;
+  border-radius: 20px;
+  position: absolute;
 }
