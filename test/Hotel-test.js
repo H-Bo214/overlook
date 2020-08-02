@@ -102,9 +102,9 @@ describe('Hotel', function() {
   }
 ];
 
-  rooms = new Rooms(allRooms)
-  bookings = new BookingRepo(allBookings)
-  hotel = new Hotel(rooms, bookings)
+  rooms = new Rooms(allRooms);
+  bookings = new BookingRepo(allBookings);
+  hotel = new Hotel(rooms, bookings);
 });
 
   it.only('should be a function', function() {
@@ -118,31 +118,19 @@ describe('Hotel', function() {
 
   it.only('should find booked rooms by date', function() {
     expect(hotel.findBookedRoomsByDate("2020/08/01")).to.deep.equal([6])
-    // expect(hotel.findBookedRoomsByDate("2020/02/16")).to.deep.equal([7])
-  })
+  });
 
   it.only('should find booked rooms by date', function() {
     expect(hotel.findBookedRoomsByDate("2020/08/01")).to.deep.equal([6])
-    // expect(hotel.findBookedRoomsByDate("2020/02/16")).to.deep.equal([7])
-  })
-
-
-
-
-
-
-
-
-
-
+  });
 
   it.only('should find available rooms by date and room type', function() {
     expect(hotel.findRoomsWithFilter("2020/08/01", 'residential suite')).to.deep.equal([allRooms[0]])
-  })
+  });
 
   it.only('should filter rooms date', function() {
     expect(hotel.findRoomsWithoutFilter('2020/08/01')).to.deep.equal([allRooms[0], allRooms[1], allRooms[2], allRooms[3], allRooms[4]])
-  })
+  });
 
 
 

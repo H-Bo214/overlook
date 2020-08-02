@@ -1,5 +1,5 @@
 import { expect } from 'chai';
-import Rooms from '../src/Room';
+import RoomRepo from '../src/Room-repo';
 
 describe('Rooms', function() {
  let rooms, allRooms
@@ -47,15 +47,15 @@ describe('Rooms', function() {
     },
   ];
 
-  allRooms = new Rooms(rooms)
+  allRooms = new RoomRepo(rooms)
   });
 
   it.only('should be a function', function() {
-    expect(Rooms).to.be.a('function');
+    expect(RoomRepo).to.be.a('function');
   });
 
   it.only('should be an instance of Rooms', function() {
-    expect(allRooms).to.be.an.instanceof(Rooms);
+    expect(allRooms).to.be.an.instanceof(RoomRepo);
   });
 
 });

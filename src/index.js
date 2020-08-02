@@ -2,7 +2,7 @@ import './css/style.scss';
 import './images/hotel-sign-bw-medium.jpg';
 import './images/hotel-red.jpg';
 import domUpdates from '../src/domUpdates';
-import Rooms from './room';
+import RoomRepo from './Room-repo';
 import BookingRepo from './Booking-repo';
 import Hotel from './hotel';
 import User from './user';
@@ -62,7 +62,7 @@ Promise.all([
 }
 
 function reassignData(allRooms, allBookings, currentClient) {
-   rooms = new Rooms(allRooms);
+   rooms = new RoomRepo(allRooms);
   //  console.log('roomsInstantiation', rooms);
    bookings = new BookingRepo(allBookings);
   //  console.log('bookingsInstantiation', bookings);

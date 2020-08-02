@@ -1,4 +1,4 @@
-class Rooms {
+class RoomRepo {
   constructor(allRooms) {
     this.allRooms = allRooms;
   }
@@ -12,4 +12,4 @@ class Rooms {
 
 
 
-export default Rooms;
+export default RoomRepo;
