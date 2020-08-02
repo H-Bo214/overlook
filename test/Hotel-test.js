@@ -1,6 +1,6 @@
 import { expect } from 'chai';
 import Hotel from '../src/Hotel';
-import Bookings from '../src/Booking';
+import BookingRepo from '../src/Booking-repo';
 import Rooms from '../src/Room';
 
 describe('Hotel', function() {
@@ -92,11 +92,7 @@ describe('Hotel', function() {
     "roomNumber": 13,
     "roomServiceCharges": []
   },
-
-
-
-
-// Booked room for today
+// Booked room for 2020/08/01
   {
     "id": "2w2w2w2w2w2w2w2w2w",
     "userID": 1,
@@ -107,7 +103,7 @@ describe('Hotel', function() {
 ];
 
   rooms = new Rooms(allRooms)
-  bookings = new Bookings(allBookings)
+  bookings = new BookingRepo(allBookings)
   hotel = new Hotel(rooms, bookings)
 });
 
@@ -125,16 +121,27 @@ describe('Hotel', function() {
     // expect(hotel.findBookedRoomsByDate("2020/02/16")).to.deep.equal([7])
   })
 
-  it.only('should find available rooms by date', function() {
-    expect(hotel.findAvailableRoomsByDate("2020/08/01")).to.deep.equal([allRooms[0], allRooms[1], allRooms[2], allRooms[3], allRooms[4]])
+  it.only('should find booked rooms by date', function() {
+    expect(hotel.findBookedRoomsByDate("2020/08/01")).to.deep.equal([6])
+    // expect(hotel.findBookedRoomsByDate("2020/02/16")).to.deep.equal([7])
   })
 
-  // it.only('should filter rooms by room type', function() {
-  //   expect(hotel.filterRoomsByType(rooms)).to.deep.equal('hello')
-  // });
 
-  it.only('should filter rooms by filter tag', function() {
-    expect(hotel.filterRoomsByType("single room")).to.deep.equal([allRooms[2], allRooms[3], allRooms[4]])
+
+
+
+
+
+
+
+
+
+  it.only('should find available rooms by date and room type', function() {
+    expect(hotel.findRoomsWithFilter("2020/08/01", 'residential suite')).to.deep.equal([allRooms[0]])
+  })
+
+  it.only('should filter rooms date', function() {
+    expect(hotel.findRoomsWithoutFilter('2020/08/01')).to.deep.equal([allRooms[0], allRooms[1], allRooms[2], allRooms[3], allRooms[4]])
   })
 
 

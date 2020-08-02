@@ -4,6 +4,7 @@ class Hotel {
     this.allBookings = allBookings;
   }
 
+  // have test
   findBookedRoomsByDate(date) {
     let allBookings = this.allBookings.allBookings;
     return allBookings.reduce((bookedRooms, booking) => {
@@ -14,7 +15,7 @@ class Hotel {
     }, []);
   };
 
-
+// not sure if test needed
   findAvailableRoomsByDate(date, filterSelection) {
     if (filterSelection === 'none') {
      return this.findRoomsWithoutFilter(date);
@@ -24,19 +25,19 @@ class Hotel {
     }
   };
 
-
+//have test
   findRoomsWithFilter(date, filterSelection) {
     let allRooms = this.allRooms.allRooms;
     let bookedRooms = this.findBookedRoomsByDate(date);
     return allRooms.reduce((availableRooms, room) => {
       if (!bookedRooms.includes(room.number) && room.roomType === filterSelection) {
         availableRooms.push(room)
-        console.log('availableRooms', availableRooms);
+        // console.log('availableRooms', availableRooms);
       }
       return availableRooms;
     }, []);
   }
- 
+ //have test
   findRoomsWithoutFilter(date) {
     let allRooms = this.allRooms.allRooms;
     let bookedRooms = this.findBookedRoomsByDate(date);
@@ -47,17 +48,6 @@ class Hotel {
       return availableRooms;
     }, []);
   }
-
-
-  filterRoomsByType(filterSelection) {
-    let filteredRooms = this.allRooms.allRooms.filter(room => room.roomType.includes(filterSelection));
-    console.log('filteredRooms', filteredRooms);
-    return filteredRooms;
-  }
-
-
-
-
 
 }
 

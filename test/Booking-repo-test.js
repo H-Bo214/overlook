@@ -1,8 +1,8 @@
 import { expect } from 'chai';
-import Bookings from '../src/Booking';
+import BookingRepo from '../src/Booking-repo';
 
 
-describe('Bookings', function() {
+describe('BookingRepo', function() {
   let bookings, allBookings
 
   beforeEach(function() {
@@ -41,11 +41,6 @@ describe('Bookings', function() {
       "roomNumber": 5,
       "roomServiceCharges": []
     },
-
-
-
-
-// Booked room for today
     {
       "id": "2w2w2w2w2w2w2w2w2w",
       "userID": 1,
@@ -55,22 +50,16 @@ describe('Bookings', function() {
     }
   ];
 
-  bookings = new Bookings(allBookings)
+  bookings = new BookingRepo(allBookings)
   });
 
   it.only('should be a function', function() {
-    expect(Bookings).to.be.a('function');
+    expect(BookingRepo).to.be.a('function');
   });
 
   it.only('should be an instance of Bookings', function() {
-    expect(bookings).to.be.an.instanceof(Bookings);
+    expect(bookings).to.be.an.instanceof(BookingRepo);
   });
-
-  // moved to Hotel class/hotel-test
-  // it.only('should find booked rooms by date', function() {
-  //   expect(bookings.findBookedRoomsByDate("2020/08/01")).to.deep.equal([6])
-  //   expect(bookings.findBookedRoomsByDate("2020/02/16")).to.deep.equal([4])
-  // })
 
 
 
