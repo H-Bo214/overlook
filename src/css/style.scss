@@ -6,27 +6,22 @@
 *:after {
   box-sizing: border-box;
   font-family: 'DM Sans', sans-serif;
-  // color: #fff;
 }
 
-.header {}
+// .header {}
 
 .need-date-message {
+  text-align: center;
+  font-size: 19px;
 }
-.login-parent {}
+// .login-parent {}
 
-.login-header {}
+// .login-header {}
 
-.manager-header {}
+// .manager-header {}
 
-.client-header {}
+// .client-header {}
 
-// body {
-//   background-image: url("../images/hotel-red.jpg");
-//   // background-repeat: no-repeat;
-//   object-fit: contain;
-//   opacity: 0.8;
-// }
 
 html { 
   background: url(../images/hotel-red.jpg) no-repeat center center fixed; 
@@ -34,8 +29,28 @@ html {
   -moz-background-size: cover;
   -o-background-size: cover;
   background-size: cover;
-  
+  overflow: hidden;
+  opacity: 0.91;
+  @include iphone-size {
+    background: url(../images/hotel-red.jpg) no-repeat center center fixed; 
+  -webkit-background-size: cover;
+  -moz-background-size: cover;
+  -o-background-size: cover;
+  background-size: cover;
+  overflow: unset;
+  opacity: 0.91;
+  }
 }
+
+main {
+  color: #fff;
+}
+
+img {
+   object-fit: cover;
+   opacity: 0.4;
+}
+
 
 .login-container {
   align-items: center;
@@ -47,11 +62,14 @@ html {
 }
 
 .login {
-  border: 2px solid #fff;
+  // border: 2px solid #fff;
+  border-radius: 10px;
   height: 32em;
   padding: 2em;
   width: 21em;
-  opacity: 0.80;
+  opacity: 0.88;
+  // color: #fff;
+  background: #000;
   @include iphone-size {
     width: 23em;
   }
@@ -61,13 +79,13 @@ h1 {
   font-size: 2em;
   text-align: center;
   margin-top: 15px;
+  // color: #fff;
 }
 
 h2 {
   padding: 0 .5em;
   text-align: center;
   @include iphone-size {
-    // text-align: center;
     font-size: 20px;
   }
 }
@@ -91,9 +109,10 @@ h2 {
 
 .login-error-msg {
   color: #fd1d1d;
-  font-size: 14px;
+  font-size: 15px;
   margin-top: 0;
   text-align: center;
+  color: #fff;
 }
 
 .login-button {
@@ -102,16 +121,24 @@ h2 {
   margin-left: 33px;
   margin-top: 6px;
   font-size: 21px;
-  background: #fff;
+  background: #000;
   border-radius: 3px;
-  color: black;
+  color:#fff;
+
+  &:hover {
+    // background: #26323c;
+      transition: 1.2s ease;
+      // opacity: 0.9;
+  }
 }
 
-.login-button:hover {
-  background: #87a7c7;
-  transition: 1.2s ease;
-  opacity: 70%;
-}
+
+// .login-button:hover {
+//   background: #26323c;
+//   transition: 1.2s ease;
+//   opacity: 0.9;
+// }
+
 
 header {
   display: flex;
@@ -136,8 +163,12 @@ header {
 .client-landing-parent {
   display: flex;
   justify-content: space-around;
+  border-radius: 10px;
+  background: #000;
+  opacity: 0.7;
   @include iphone-size {
     flex-direction: column;
+    opacity: 0.8;
   }
 }
 
@@ -189,8 +220,6 @@ ul {
   margin: 4px;
 }
 
-.client-book-room-button,
-.client-search-room-button,
 .delete-booking-button,
 .manager-client-search-button {
   cursor: pointer;
@@ -202,13 +231,37 @@ ul {
 }
 
 .client-book-room-button {
+  cursor: pointer;
+  margin: 20px 20px;
+  font-size: 21px;
+  background: #fff;
+  border-radius: 5px;
+  color: black;
   padding: 10px;
+  &:hover {
+    transition: 1.2s ease;
+    // opacity: 0.9;
+    background: #000;
+    color: #ff1818;
+    border: 1px solid #fff;
+  }
 }
 
 .client-search-room-button {
+  cursor: pointer;
+  margin: 20px 20px;
+  font-size: 21px;
   padding: 9px;
   border-radius: 5px;
   margin-top: 25px;
+  background: #fff;
+  &:hover {
+    transition: 1.2s ease;
+    // opacity: 0.9;
+    background: #000;
+    color: #ff1818;
+    border: 1px solid #fff
+  }
 }
 
 .hide {
@@ -216,7 +269,6 @@ ul {
 }
 
 .right-section {
-  border: 2px solid black;
   width: 60%;
   display: flex;
   flex-direction: column;
@@ -230,14 +282,6 @@ ul {
   }
 }
 
-
-// .right-section {
-//   border: 2px solid black;
-//   margin: 5px;
-//   text-align: center;
- 
-// }
-
 .left-aside {
   flex-grow: 1;
   display: flex;
@@ -245,7 +289,6 @@ ul {
   align-items: center;
   height: 88vh;
   width: 40%;
-  border: 2px solid black;
   text-align: center;
   @include ipad-pro-size {
     height: 92vh;
@@ -301,9 +344,11 @@ span {
 }
 
 .single-room-details-card {
-  border: 1px solid black;
-  border-radius: 20px;
+  border: 1px solid #fff;
+  border-radius: 10px;
   margin: 6px;
+  width: 17em;
+  height: 19em;
   @include ipad-pro-size {
     width: 17em;
   }
@@ -391,7 +436,7 @@ span {
 }
 
 .client-total {
-  font-size: 20px;
+  font-size: 30px;
   @include ipad-pro-size {
     font-size: 34px;
   }
@@ -403,7 +448,7 @@ span {
 .client-past-bookings  {
   display: flex;
   flex-wrap: wrap;
-  border: 1px solid black;
+  border: 1px solid #fff;
   justify-content: space-evenly;
   border-radius: 20px;
   overflow-x: scroll;
@@ -423,22 +468,27 @@ span {
 }
 
 .past-bookings {
-  border: 1px solid black;
-  border-radius: 20px;
+  border: 1px solid #fff;
+  border-radius: 10px;
   @include ipad-pro-size {
     width: 13em;
   }
 }
 
 .post-modal {
-  width: 400px;
-  border: 1px solid black;
+  width: 356px;
+  border: 1px solid #fff;
   border-radius: 20px;
   position: absolute;
+  display: flex;
+  justify-content: center;
+  background: #000;
 }
 
 .filter-input {
   padding: 9px;
+  font-size: 20px;
+  border-radius: 5px;
 }
 
 .welcome-message {
@@ -448,3 +498,15 @@ span {
   }
 }
 
+.close-modal-parent {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+.close-modal {
+  text-align: center;
+  font-size: 27px;
+  border: 2px solid #fff;
+  margin-bottom: 12px;
+  border-radius: 5px;
+}

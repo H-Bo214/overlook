@@ -56,6 +56,14 @@ let domUpdates = {
 
     })
   },
+  displayLoginErrorMessage() {
+    let usernameLoginInput = document.querySelector('.username-login-input');
+    let passwordLoginInput = document.querySelector('.password-login-input');
+    let loginErrorMessage = document.querySelector('.login-error-msg')
+    loginErrorMessage.classList.remove('hide')
+    usernameLoginInput.addEventListener('focus', (event) => loginErrorMessage.classList.add('hide'))
+    passwordLoginInput.addEventListener('focus', (event) => loginErrorMessage.classList.add('hide'))
+  },
 
   noDateEnteredMessage() {
     let clientDateInput = document.getElementById('client-date')
@@ -71,7 +79,6 @@ let domUpdates = {
       let noRoomsMsg = document.querySelector('.no-rooms-available-message');
       noRoomsMsg.classList.remove('hide')
     } else {
-   
       let clientAvailableRooms = document.querySelector('.client-available-rooms')
       clientAvailableRooms.innerText = '';
       availableRooms.forEach(room => {
@@ -99,20 +106,25 @@ let domUpdates = {
 
     postModal(postResult) {
       let postModal = document.querySelector('.post-modal');
+      
       postModal.classList.remove('hide');
       postModal.innerHTML = `
-      <div>  
+      <div class="close-modal-parent">  
       <p>Thank you for booking!</p>
-        <p class="close-modal" data-id="close">X</p>
+        <button class="close-modal" type ="button" name="close thank you message"data-id="close">X</button>
       </div>
         `
-
+        // let closeModal = document.querySelector('.close-modal');
+        // closeModal.addEventListener('click', function closeMessage() {
+        //   let postModal = document.querySelector('.post-modal');
+        //   postModal.classList.add('hide');
+        // })
     },
 
-    closeModal() {
-      
-      
-    }
+    // closeMessage() {
+    //   let postModal = document.querySelector('.post-modal');
+    //   postModal.classList.add('hide');
+    // }
 
 
 

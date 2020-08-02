@@ -24,11 +24,10 @@ loginButton.addEventListener('click', userLogin);
 function loginErrors() {
   let usernameLoginInput = document.querySelector('.username-login-input');
   let passwordLoginInput = document.querySelector('.password-login-input');
-  let loginErrorMessage = document.querySelector('.login-error-msg')
   if (usernameLoginInput.value === '' || passwordLoginInput.value === '') {
-    loginErrorMessage.classList.remove('hide')
+    domUpdates.displayLoginErrorMessage()
   } else if (passwordLoginInput.value !== 'overlook2020') {
-    loginErrorMessage.classList.remove('hide')
+    domUpdates.displayLoginErrorMessage()
   }
 }
 //This function fetches all users
@@ -40,7 +39,6 @@ function userLogin() {
 };
 
 function loadClientPage(clientsData) {
-  // console.log('clientsData', clientsData);
   let usernameLoginInput = document.querySelector('.username-login-input');
   let passwordLoginInput = document.querySelector('.password-login-input');
   loginErrors()
@@ -107,7 +105,7 @@ function clientButtonHandler(event) {
   }
   if (event.target.closest(".client-available-rooms")) {
       let bookId = event.target.closest(".client-book-room-button").getAttribute("data-id");
-      //  currentUser.postBooking(bookId, clientDate)
+       currentUser.postBooking(bookId, clientDate)
   }
   if (event.target.closest('.post-modal')) {
     let postModalParent = document.querySelector('.post-modal')
