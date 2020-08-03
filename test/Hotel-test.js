@@ -151,9 +151,19 @@ describe('Hotel', function () {
     expect(hotel.findRoomsWithoutFilter('2020/08/01')).to.deep.equal([allRooms[0], allRooms[1], allRooms[2], allRooms[3], allRooms[4]]);
   });
 
-  it.only('should find rooms available today', function () {
-    
+  it.only('should find rooms available today', function () {;
     expect(hotel.findRoomsAvailableToday()).to.equal(4);
   });
+
+  it.only('should format date to the the current usable format', function() {
+    expect(hotel.formatDates('2020/8/1')).to.equal('2020/08/01')
+  });
+
+  it.only('should find the percentage of occupied rooms', function() {
+    expect(hotel.findOccupancyPercentage()).to.equal('33')
+  });
+
+  
+
 
 });

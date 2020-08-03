@@ -1,5 +1,6 @@
 let domUpdates = {
 
+  // Manager Page landing 
   displayManagerPage(hotel) {
     let loginHeader = document.querySelector('.login-header');
     let loginParent = document.querySelector('.login-parent');
@@ -9,8 +10,10 @@ let domUpdates = {
     loginParent.classList.add('hide');
     managerHeader.classList.remove('hide');
     managerLandingParent.classList.remove('hide');
+    this.loadManagerData(hotel);
   },
 
+  //Client Page landing
   displayClientPage(currentClient) {
     let loginHeader = document.querySelector('.login-header');
     let loginParent = document.querySelector('.login-parent');
@@ -21,7 +24,6 @@ let domUpdates = {
     clientHeader.classList.remove('hide');
     clientLandingParent.classList.remove('hide');
     this.loadClientData(currentClient)
-    // console.log('currentClientName', currentClient.name);
   },
 
   displayClientTotalSpent(currentClient) {
@@ -70,6 +72,8 @@ let domUpdates = {
     })
   },
 
+
+  // Client Section >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
   displayAvailableRoomsFromSearch(availableRooms) {
     if (availableRooms.length === 0) {
       let noRoomsMsg = document.querySelector('.no-rooms-available-message');
@@ -98,7 +102,7 @@ let domUpdates = {
     this.displayWelcomeMessage(currentClient);
     this.displayClientBookings(currentClient);
   },
-
+//>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
   postModal(postResult) {
     let postModal = document.querySelector('.post-modal');
 
@@ -137,25 +141,20 @@ let domUpdates = {
 
 
 
+// Manager search section >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
 
   displaySearchedUserInfo(displaySearchedUser, currentUser) {
     displaySearchedUser.insertAdjacentHTML('beforeend', this.displaySearchedClientPage(currentUser))
   },
 
   displaySearchedClientPage(currentUser) {
-    // let loginHeader = document.querySelector('.login-header');
-    // let loginParent = document.querySelector('.login-parent');
     let managerClientHeader = document.querySelector('.manager-client-header');
     let managerClientLandingParent = document.querySelector('.manager-client-landing-parent');
-    // loginHeader.classList.add('hide');
-    // loginParent.classList.add('hide');
     managerClientHeader.classList.remove('hide');
     managerClientLandingParent.classList.remove('hide');
     this.loadSearchedClientData(currentUser)
 
   },
-
-
 
   loadSearchedClientData(currentUser) {
     this.displaySearchedClientTotalSpent(currentUser);
@@ -170,9 +169,8 @@ let domUpdates = {
   },
 
   displaySearchedWelcomeMessage(currentUser) {
-    let welcomeMessage = document.querySelector('.searched-client-welcome-message');
-    // let firstName = currentUser.name.split(" ")[0];
-    welcomeMessage.innerHTML = `Client Name: ${currentUser.name}`;
+    let currentClient = document.querySelector('.searched-client-welcome-message');
+    currentClient.innerHTML = `Client Name: ${currentUser.name}`;
   },
 
   displaySearchedClientBookings(currentUser) {
@@ -215,9 +213,23 @@ let domUpdates = {
     }
   },
 
+  loadManagerData(hotel) {
+    this.displayNumRoomsAvailableToday(hotel);
+    this.displayPercentOccupancy(hotel);
+    // this.displayClientBookings(currentClient);
+  },
 
+  displayNumRoomsAvailableToday(hotel) {
+    let roomsAvailable = document.querySelector('.rooms-available');
+    let totalRoomsAvailable = hotel.findRoomsAvailableToday();
+    roomsAvailable.innerHTML = `<p class= "total-rooms">There are currently ${totalRoomsAvailable} rooms available.</p>`;
+  },
 
-
+  displayPercentOccupancy(hotel) {
+    let currentOccupancy = document.querySelector('.current-occupancy');
+    let percentRoomsAvailable = hotel.findOccupancyPercentage();
+    currentOccupancy.innerHTML = `<p class= "percent-occupied">We are currently at ${percentRoomsAvailable}% occupancy.</p>`;
+  },
 
 }
 

@@ -68,19 +68,11 @@ Promise.all([
 
 function reassignData(allRooms, allBookings, currentClient, clientsData) {
    rooms = new RoomRepo(allRooms);
-  //  console.log('roomsInstantiation', rooms);
    bookings = new BookingRepo(allBookings);
-  //  console.log('bookingsInstantiation', bookings);
    hotel = new Hotel(rooms, bookings, clientsData, todaysDate);
-  //  console.log('hotelInstantiation', hotel);
    currentUser = new User(currentClient, allBookings, allRooms)
-  //  console.log('currentUser', currentUser);
   if (currentUser.id === undefined) {
-    // console.log('dateQ', date);
-    // let refactoredDate = refactorDates()
-    // console.log('refactorDate', refactoredDate);
     domUpdates.displayManagerPage(hotel)
-
   } else {
     domUpdates.displayClientPage(currentUser);
   }
