@@ -3,7 +3,7 @@ class Hotel {
     this.allRooms = allRooms;
     this.allBookings = allBookings;
     this.allUsers = clientsData;
-    this.date = this.refactorDates(todaysDate);
+    this.date = this.formatDates(todaysDate);
     this.roomsAvailableToday = this.findRoomsAvailableToday();
     this.percentRoomAvailable = this.findPercentOfAvailableRooms();
     this.totalRevenue = this.getTotalRevenue()
@@ -53,22 +53,18 @@ class Hotel {
       return availableRooms;
     }, []);
   };
-
+//has test
   findRoomsAvailableToday() {
    let roomNumsBookedToday = this.allBookings.allBookings.filter(booking => {
      if (booking.date === this.date) {
        return booking.roomNumber
      }
    })
-  //  console.log('roomNumsBookedToday', roomNumsBookedToday);
-
-
      let numAvailableRooms = (this.allRooms.allRooms.length - roomNumsBookedToday.length)
-    //  console.log('numAvailbleRooms', numAvailableRooms);
      return numAvailableRooms;
   };
-
-  refactorDates(date) {
+//has test
+  formatDates(date) {
     let dateArray = date.split('/');
     let month = dateArray[1];
     let year = dateArray[0];
@@ -76,10 +72,7 @@ class Hotel {
     if (month <= 9 || day <= 9) {
       let unformattedDate = `${year}/0${month}/0${day}`;
       return unformattedDate
-    } else {
-      let unformattedDate = `${year}/${month}/${day}`;
-      return unformattedDate
-    }
+    } 
   }
 
   findPercentOfAvailableRooms() {

@@ -152,8 +152,11 @@ describe('Hotel', function () {
   });
 
   it.only('should find rooms available today', function () {
-    
     expect(hotel.findRoomsAvailableToday()).to.equal(4);
+  });
+
+  it.only('should format date to the the current usable format', function() {
+    expect(hotel.formatDates('2020/8/1')).to.equal('2020/08/01')
   });
 
 });
