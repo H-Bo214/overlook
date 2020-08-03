@@ -159,8 +159,11 @@ describe('Hotel', function () {
     expect(hotel.formatDates('2020/8/1')).to.equal('2020/08/01')
   });
 
+  it.only('should find the percentage of occupied rooms', function() {
+    expect(hotel.findOccupancyPercentage()).to.equal('33')
+  });
 
-
+  
 
 
 });

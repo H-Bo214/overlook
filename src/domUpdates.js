@@ -215,7 +215,7 @@ let domUpdates = {
 
   loadManagerData(hotel) {
     this.displayNumRoomsAvailableToday(hotel);
-    // this.displayWelcomeMessage(currentClient);
+    this.displayPercentOccupancy(hotel);
     // this.displayClientBookings(currentClient);
   },
 
@@ -223,6 +223,12 @@ let domUpdates = {
     let roomsAvailable = document.querySelector('.rooms-available');
     let totalRoomsAvailable = hotel.findRoomsAvailableToday();
     roomsAvailable.innerHTML = `<p class= "total-rooms">There are currently ${totalRoomsAvailable} rooms available.</p>`;
+  },
+
+  displayPercentOccupancy(hotel) {
+    let currentOccupancy = document.querySelector('.current-occupancy');
+    let percentRoomsAvailable = hotel.findOccupancyPercentage();
+    currentOccupancy.innerHTML = `<p class= "percent-occupied">We are currently at ${percentRoomsAvailable}% occupancy.</p>`;
   },
 
 }

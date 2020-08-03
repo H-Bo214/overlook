@@ -5,7 +5,7 @@ class Hotel {
     this.allUsers = clientsData;
     this.date = this.formatDates(todaysDate);
     this.roomsAvailableToday = this.findRoomsAvailableToday();
-    this.percentRoomAvailable = this.findPercentOfAvailableRooms();
+    this.percentRoomAvailable = this.findOccupancyPercentage();
     this.totalRevenue = this.getTotalRevenue()
   };
 
@@ -71,10 +71,11 @@ class Hotel {
       return dateFormat;
     } 
   }
-
-  findPercentOfAvailableRooms() {
+// has test
+  findOccupancyPercentage() {
     let percent = (this.roomsAvailableToday / this.allRooms.allRooms.length) * 100;
-    let num = parseInt(percent)
+    let remainingPercent = 100 - percent;
+    let num = parseInt(remainingPercent)
     num.toFixed(0)
     return `${num}`
   }
