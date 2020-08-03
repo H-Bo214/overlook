@@ -1,7 +1,12 @@
 class Hotel {
-  constructor(allRooms, allBookings) {
+  constructor(allRooms, allBookings, clientsData, todaysDate) {
     this.allRooms = allRooms;
     this.allBookings = allBookings;
+    this.allUsers = clientsData;
+    this.date = this.refactorDates(todaysDate);
+    this.roomsAvailableToday = this.findRoomsAvailableToday();
+    this.percentRoomAvailable = this.findPercentOfAvailableRooms();
+    this.totalRevenue = this.getTotalRevenue()
   };
 
   // have test
@@ -48,6 +53,67 @@ class Hotel {
       return availableRooms;
     }, []);
   };
+
+  findRoomsAvailableToday() {
+   let roomNumsBookedToday = this.allBookings.allBookings.filter(booking => {
+     if (booking.date === this.date) {
+       return booking.roomNumber
+     }
+   })
+  //  console.log('roomNumsBookedToday', roomNumsBookedToday);
+
+
+     let numAvailableRooms = (this.allRooms.allRooms.length - roomNumsBookedToday.length)
+    //  console.log('numAvailbleRooms', numAvailableRooms);
+     return numAvailableRooms;
+  };
+
+  refactorDates(date) {
+    let dateArray = date.split('/');
+    let month = dateArray[1];
+    let year = dateArray[0];
+    let day = dateArray[2];
+    if (month <= 9 || day <= 9) {
+      let unformattedDate = `${year}/0${month}/0${day}`;
+      return unformattedDate
+    } else {
+      let unformattedDate = `${year}/${month}/${day}`;
+      return unformattedDate
+    }
+  }
+
+  findPercentOfAvailableRooms() {
+    let percent = (this.roomsAvailableToday / this.allRooms.allRooms.length) * 100;
+    let num = parseInt(percent)
+    num.toFixed(0)
+    return `${num}`
+  }
+
+  getTotalRevenue() {
+    let matchingBookings = this.allBookings.allBookings.filter(booking => booking.date === this.date);
+    let profits = matchingBookings.reduce((acc, match) => {
+      this.allRooms.allRooms.forEach(room => {
+        if (room.number === match.roomNumber) {
+          acc = room.costPerNight + acc
+        }
+      })
+      return acc
+    }, 0)
+    return profits
+  }
+
+  findSearchedUser(name) {
+    // console.log('name in findSearch', typeof name);
+    // console.log('allUsers', this.allUsers);
+    return this.allUsers.users.find(user => user.name === name)
+  }
+
+
+
+
+
+
+
 
 };
 

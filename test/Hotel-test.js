@@ -4,9 +4,32 @@ import BookingRepo from '../src/Booking-repo';
 import RoomRepo from '../src/Room-repo';
 
 describe('Hotel', function () {
-  let bookings, allBookings, rooms, allRooms, hotel
+  let bookings, allBookings, rooms, allRooms, hotel, allUsers, date;
 
   beforeEach(function () {
+    date = "2020/8/2"
+    allUsers = [
+      {
+      "id": 1,
+      "name": "Leatha Ullrich"
+      },
+      {
+      "id": 2,
+      "name": "Rocio Schuster"
+      },
+      {
+      "id": 3,
+      "name": "Kelvin Schiller"
+      },
+      {
+      "id": 4,
+      "name": "Kennedi Emard"
+      },
+      {
+      "id": 5,
+      "name": "Rhiannon Little"
+      },];
+
     allRooms = [{
         "number": 15,
         "roomType": "residential suite",
@@ -81,14 +104,14 @@ describe('Hotel', function () {
       {
         "id": "5fwrgu4i7k55hl6t7",
         "userID": 20,
-        "date": "2020/02/16",
+        "date": "2020/08/02",
         "roomNumber": 7,
         "roomServiceCharges": []
       },
       {
         "id": "5fwrgu4i7k55hl6t8",
         "userID": 1,
-        "date": "2020/02/05",
+        "date": "2020/08/02",
         "roomNumber": 13,
         "roomServiceCharges": []
       },
@@ -104,7 +127,7 @@ describe('Hotel', function () {
 
     rooms = new RoomRepo(allRooms);
     bookings = new BookingRepo(allBookings);
-    hotel = new Hotel(rooms, bookings);
+    hotel = new Hotel(rooms, bookings, allUsers, date);
 
   });
 
@@ -126,6 +149,11 @@ describe('Hotel', function () {
 
   it.only('should filter rooms date', function () {
     expect(hotel.findRoomsWithoutFilter('2020/08/01')).to.deep.equal([allRooms[0], allRooms[1], allRooms[2], allRooms[3], allRooms[4]]);
+  });
+
+  it.only('should find rooms available today', function () {
+    
+    expect(hotel.findRoomsAvailableToday()).to.equal(4);
   });
 
 });

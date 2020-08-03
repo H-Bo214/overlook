@@ -13,12 +13,15 @@ let today = new Date()
 let todaysDate = today.getFullYear()+'/'+(today.getMonth()+1)+'/'+today.getDate();
 let loginButton = document.querySelector('.login-button');
 let rightSection = document.querySelector('.right-section')
-
+let managerRightSection = document.querySelector('.manager-right-section');
+let date = new Date().toLocaleDateString();
+console.log('dateQ', date);
 rightSection.addEventListener('click', function() {
   clientButtonHandler(event)
 });
 
 loginButton.addEventListener('click', userLogin);
+managerRightSection.addEventListener('click', managerButtonHandler);
 
 function loginErrors() {
   let usernameLoginInput = document.querySelector('.username-login-input');
@@ -40,36 +43,49 @@ function userLogin() {
 function loadClientPage(clientsData) {
   let usernameLoginInput = document.querySelector('.username-login-input');
   let passwordLoginInput = document.querySelector('.password-login-input');
+  let verifiedClient;
   loginErrors()
   if (usernameLoginInput.value === 'manager' && passwordLoginInput.value === 'overlook2020') {
-    domUpdates.displayManagerPage()
+    verifiedClient = {}
+    fetchNeededData(verifiedClient, clientsData)
+    
   } else if (usernameLoginInput.value.includes('customer') && passwordLoginInput.value === 'overlook2020') {
     let clientID = checkPasswordNumbers(usernameLoginInput.value)
-    let verifiedClient = checkPassword(clientID, clientsData);
-    fetchNeededData(verifiedClient)
+    verifiedClient = checkPassword(clientID, clientsData);
+    fetchNeededData(verifiedClient, clientsData)
   }
 }
 // This function fetches the current clients room and booking data
-function fetchNeededData(verifiedClient) {
+function fetchNeededData(verifiedClient, clientsData) {
 Promise.all([
   fetch('https://fe-apps.herokuapp.com/api/v1/overlook/1904/rooms/rooms')
   .then(response => response.json()),
   fetch('https://fe-apps.herokuapp.com/api/v1/overlook/1904/bookings/bookings').
   then(response => response.json()),
 ])
-.then(data => reassignData(data[0].rooms, data[1].bookings, verifiedClient))
+.then(data => reassignData(data[0].rooms, data[1].bookings, verifiedClient, clientsData))
 }
 
-function reassignData(allRooms, allBookings, currentClient) {
+function reassignData(allRooms, allBookings, currentClient, clientsData) {
    rooms = new RoomRepo(allRooms);
   //  console.log('roomsInstantiation', rooms);
    bookings = new BookingRepo(allBookings);
   //  console.log('bookingsInstantiation', bookings);
-   hotel = new Hotel(rooms, bookings);
+   hotel = new Hotel(rooms, bookings, clientsData, todaysDate);
   //  console.log('hotelInstantiation', hotel);
    currentUser = new User(currentClient, allBookings, allRooms)
-   console.log('currentUser', currentUser);
-  domUpdates.displayClientPage(currentUser);
+  //  console.log('currentUser', currentUser);
+  if (currentUser.id === undefined) {
+    // console.log('dateQ', date);
+    // let refactoredDate = refactorDates()
+    // console.log('refactorDate', refactoredDate);
+    domUpdates.displayManagerPage(hotel)
+
+  } else {
+    domUpdates.displayClientPage(currentUser);
+  }
+
+  
 }
 
 function checkPasswordNumbers(usernameLoginInput) {
@@ -110,6 +126,7 @@ function clientButtonHandler(event) {
     let postModalParent = document.querySelector('.post-modal')
     postModalParent.classList.add('hide');
   }
+  
 }
 
 function checkInputValue(dateValue) {
@@ -123,4 +140,34 @@ function checkInputValue(dateValue) {
   }
 }
 
+function managerButtonHandler(event) {
+  let displaySearchedUser = document.querySelector('.client-details-section')
+  if (event.target.classList.contains('manager-client-search-button')) {
+    // console.log('if con', event.target.classList.contains('manager-client-search-button'))
+    let name = document.querySelector('.manager-client-name-input').value;
+    // console.log('name', name);
+    // console.log('rooms', rooms);
+    // console.log('bookings', bookings);
+    let searchedUser = hotel.findSearchedUser(name)
+    currentUser = new User(searchedUser, bookings.allBookings, rooms.allRooms)
+    // console.log('currentUser', currentUser);
+    domUpdates.displaySearchedUserInfo(displaySearchedUser, currentUser)
+  }
+
+  let dateValue = document.getElementById('manager-client-date').value;
+  if (event.target.classList.contains('manager-client-search-room-button')) {
+    searchedCheckInputValue(dateValue)
+  }
+}
+
+function searchedCheckInputValue(dateValue) {
+  if (dateValue === '') {
+    domUpdates.noDateEnteredMessage()
+  } else {
+    let searchedFilterSelection  = document.querySelector('.searched-filter-input')
+    let searchedAvailableRooms = hotel.findAvailableRoomsByDate(dateValue, searchedFilterSelection.value);    
+    domUpdates.displayManagerAvailableRoomsFromSearch(searchedAvailableRooms)
+    searchedAvailableRooms = [];
+  }
+}
 
