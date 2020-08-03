@@ -176,6 +176,7 @@ let domUpdates = {
   displaySearchedClientBookings(currentUser) {
     let myBookings = document.querySelector('.searched-client-past-bookings');
     let bookings = currentUser.getMyBookings()
+    myBookings.innerText = '';
     console.log('currentUser', currentUser);
     bookings.forEach(booking => {
       let bookingDetails =
@@ -192,13 +193,13 @@ let domUpdates = {
 
   displayManagerAvailableRoomsFromSearch(searchedAvailableRooms) {
     if (searchedAvailableRooms.length === 0) {
-      let noRoomsMsg = document.querySelector('.searched-no-rooms-available-message');
-      noRoomsMsg.classList.remove('hide')
+      let searchedNoRoomsMsg = document.querySelector('.searched-no-rooms-available-message');
+      searchedNoRoomsMsg.classList.remove('hide')
     } else {
-      let clientAvailableRooms = document.querySelector('.searched-client-available-rooms')
-      clientAvailableRooms.innerText = '';
+      let searchedClientAvailableRooms = document.querySelector('.searched-client-available-rooms')
+      searchedClientAvailableRooms.innerText = '';
       searchedAvailableRooms.forEach(room => {
-        let availableRoomDetails =
+        let searchedAvailableRoomDetails =
           ` <ul class="single-room-details-card" id=${room.number}>
           <li><span>Room #: </span>${room.number}</li>
           <li><span>Room Type: </span>${room.roomType}</li>
@@ -206,9 +207,9 @@ let domUpdates = {
           <li><span>Bed size: </span>${room.bedSize}</li>
           <li><span>Number of beds: </span>${room.numBeds}</li>
           <li><span>Cost per night: </span>${room.costPerNight}</li>
-      <button class="client-book-room-button" data-id="${room.number}" type="button" name="Book Now">Book Now</button>
+      <button class="manager-client-book-room-button" data-id="${room.number}" type="button" name="Book Now">Book Now</button>
     </ul>`
-        clientAvailableRooms.insertAdjacentHTML("beforeend", availableRoomDetails)
+    searchedClientAvailableRooms.insertAdjacentHTML("beforeend", searchedAvailableRoomDetails)
       })
     }
   },
@@ -237,8 +238,23 @@ let domUpdates = {
     totalRevenueToday.innerHTML = `<p class= "todays-revenue">$${todaysRevenue}</p>`;
   },
 
+  noDateEnteredMessageManager() {
+    let managerClientDateInput = document.getElementById('manager-client-date')
+    let managerNeedDateMessage = document.querySelector('.manager-need-date-message');
+    managerNeedDateMessage.classList.remove('hide');
+    managerClientDateInput.addEventListener('focus', (event) => {
+      managerNeedDateMessage.classList.add('hide');
+    })
+  },
 
-
+  noClientNameEntered() {
+    let managerClientNameInput = document.querySelector('.manager-client-name-input')
+    let needClientNameMessage = document.querySelector('.no-client-name-message');
+    needClientNameMessage.classList.remove('hide');
+    managerClientNameInput.addEventListener('focus', (event) => {
+      needClientNameMessage.classList.add('hide');
+    })
+  },
 }
 
 
