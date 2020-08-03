@@ -140,7 +140,7 @@ function managerButtonHandler(event) {
     // console.log('name', name);
     // console.log('rooms', rooms);
     // console.log('bookings', bookings);
-    let searchedUser = hotel.findSearchedUser(name)
+    let searchedUser = hotel.findSearchedUserName(name)
     currentUser = new User(searchedUser, bookings.allBookings, rooms.allRooms)
     // console.log('currentUser', currentUser);
     domUpdates.displaySearchedUserInfo(displaySearchedUser, currentUser)

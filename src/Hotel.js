@@ -79,21 +79,23 @@ class Hotel {
     num.toFixed(0)
     return `${num}`
   }
-
+// has test
   getTotalRevenue() {
-    let matchingBookings = this.allBookings.allBookings.filter(booking => booking.date === this.date);
-    let profits = matchingBookings.reduce((acc, match) => {
-      this.allRooms.allRooms.forEach(room => {
+    let allRooms = this.allRooms.allRooms;
+    let allBookings = this.allBookings.allBookings;
+    let matchingBookings = allBookings.filter(booking => booking.date === this.date);
+    let revenue = matchingBookings.reduce((todaysTotal, match) => {
+      allRooms.forEach(room => {
         if (room.number === match.roomNumber) {
-          acc = room.costPerNight + acc
-        }
-      })
-      return acc
-    }, 0)
-    return profits
+          todaysTotal += room.costPerNight; 
+        };
+      });
+      return todaysTotal;
+    }, 0);
+    return revenue;
   }
 
-  findSearchedUser(name) {
+  findSearchedUserName(name) {
     return this.allUsers.users.find(user => user.name === name)
   }
 

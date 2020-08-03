@@ -2,13 +2,15 @@ import { expect } from 'chai';
 import Hotel from '../src/Hotel';
 import BookingRepo from '../src/Booking-repo';
 import RoomRepo from '../src/Room-repo';
+import User from '../src/User';
 
 describe('Hotel', function () {
-  let bookings, allBookings, rooms, allRooms, hotel, allUsers, date;
+  let bookings, allBookings, rooms, allRooms, hotel, allUsers, date, users;
 
   beforeEach(function () {
     date = "2020/8/2"
-    allUsers = [
+    allUsers = {
+      users: [
       {
       "id": 1,
       "name": "Leatha Ullrich"
@@ -28,7 +30,10 @@ describe('Hotel', function () {
       {
       "id": 5,
       "name": "Rhiannon Little"
-      },];
+      },
+    ]
+  }
+     
 
     allRooms = [{
         "number": 15,
@@ -163,7 +168,21 @@ describe('Hotel', function () {
     expect(hotel.findOccupancyPercentage()).to.equal('33')
   });
 
-  
+  it.only('should get the total revenue for today', function() {
+    expect(hotel.getTotalRevenue()).to.equal(769.61)
+  });
+
+  it.only('should find a user by their name', function() {
+    expect(hotel.findSearchedUserName("Kelvin Schiller")).to.equal(allUsers.users[2])
+  });
+
+
+
+
+
+
+
+
 
 
 });
