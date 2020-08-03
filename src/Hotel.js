@@ -55,13 +55,10 @@ class Hotel {
   };
 //has test
   findRoomsAvailableToday() {
-   let roomNumsBookedToday = this.allBookings.allBookings.filter(booking => {
-     if (booking.date === this.date) {
-       return booking.roomNumber
-     }
-   })
-     let numAvailableRooms = (this.allRooms.allRooms.length - roomNumsBookedToday.length)
-     return numAvailableRooms;
+    let allBookings = this.allBookings.allBookings;
+    let numRoomsBookedToday = allBookings.filter(booking => booking.date === this.date)
+    let numAvailableRooms = (this.allRooms.allRooms.length - numRoomsBookedToday.length)
+    return numAvailableRooms;
   };
 //has test
   formatDates(date) {
@@ -70,8 +67,8 @@ class Hotel {
     let year = dateArray[0];
     let day = dateArray[2];
     if (month <= 9 || day <= 9) {
-      let unformattedDate = `${year}/0${month}/0${day}`;
-      return unformattedDate
+      let dateFormat = `${year}/0${month}/0${day}`;
+      return dateFormat;
     } 
   }
 
@@ -96,8 +93,6 @@ class Hotel {
   }
 
   findSearchedUser(name) {
-    // console.log('name in findSearch', typeof name);
-    // console.log('allUsers', this.allUsers);
     return this.allUsers.users.find(user => user.name === name)
   }
 
