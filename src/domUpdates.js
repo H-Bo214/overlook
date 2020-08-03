@@ -216,7 +216,7 @@ let domUpdates = {
   loadManagerData(hotel) {
     this.displayNumRoomsAvailableToday(hotel);
     this.displayPercentOccupancy(hotel);
-    // this.displayClientBookings(currentClient);
+    this.displayTodaysRevenue(hotel);
   },
 
   displayNumRoomsAvailableToday(hotel) {
@@ -230,6 +230,14 @@ let domUpdates = {
     let percentRoomsAvailable = hotel.findOccupancyPercentage();
     currentOccupancy.innerHTML = `<p class= "percent-occupied">We are currently at ${percentRoomsAvailable}% occupancy.</p>`;
   },
+
+  displayTodaysRevenue(hotel) {
+    let totalRevenueToday = document.querySelector('.total-revenue-today');
+    let todaysRevenue = hotel.getTotalRevenue();
+    totalRevenueToday.innerHTML = `<p class= "todays-revenue">$${todaysRevenue}</p>`;
+  },
+
+
 
 }
 
