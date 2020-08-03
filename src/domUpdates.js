@@ -1,6 +1,6 @@
 let domUpdates = {
 
-  displayManagerPage() {
+  displayManagerPage(hotel) {
     let loginHeader = document.querySelector('.login-header');
     let loginParent = document.querySelector('.login-parent');
     let managerHeader = document.querySelector('.manager-header');
@@ -121,6 +121,106 @@ let domUpdates = {
   //   postModal.classList.add('hide');
   // }
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  displaySearchedUserInfo(displaySearchedUser, currentUser) {
+    displaySearchedUser.insertAdjacentHTML('beforeend', this.displaySearchedClientPage(currentUser))
+  },
+
+  displaySearchedClientPage(currentUser) {
+    // let loginHeader = document.querySelector('.login-header');
+    // let loginParent = document.querySelector('.login-parent');
+    let managerClientHeader = document.querySelector('.manager-client-header');
+    let managerClientLandingParent = document.querySelector('.manager-client-landing-parent');
+    // loginHeader.classList.add('hide');
+    // loginParent.classList.add('hide');
+    managerClientHeader.classList.remove('hide');
+    managerClientLandingParent.classList.remove('hide');
+    this.loadSearchedClientData(currentUser)
+
+  },
+
+
+
+  loadSearchedClientData(currentUser) {
+    this.displaySearchedClientTotalSpent(currentUser);
+    this.displaySearchedWelcomeMessage(currentUser);
+    this.displaySearchedClientBookings(currentUser);
+  },
+
+  displaySearchedClientTotalSpent(currentUser) {
+    let searchedClientTotalSpent = document.querySelector('.searched-client-total-spent');
+    let searchedClientTotalMoneySpent = currentUser.getTotalMoneySpent();
+    searchedClientTotalSpent.innerHTML = `<p class= "client-total">$${searchedClientTotalMoneySpent}</p>`;
+  },
+
+  displaySearchedWelcomeMessage(currentUser) {
+    let welcomeMessage = document.querySelector('.searched-client-welcome-message');
+    // let firstName = currentUser.name.split(" ")[0];
+    welcomeMessage.innerHTML = `Client Name: ${currentUser.name}`;
+  },
+
+  displaySearchedClientBookings(currentUser) {
+    let myBookings = document.querySelector('.searched-client-past-bookings');
+    let bookings = currentUser.getMyBookings()
+    console.log('currentUser', currentUser);
+    bookings.forEach(booking => {
+      let bookingDetails =
+        ` <ul class= "past-bookings">
+        <label class="label client-past-dates" for="date">Date:</label>
+        <li>${booking.date}</li>
+        <label class="label client-past-dates" for="room number">Room Number:</label>
+        <li>${booking.roomNumber}</li>
+      </ul>
+    `
+      myBookings.insertAdjacentHTML("beforeend", bookingDetails)
+    })
+  },
+
+  displayManagerAvailableRoomsFromSearch(searchedAvailableRooms) {
+    if (searchedAvailableRooms.length === 0) {
+      let noRoomsMsg = document.querySelector('.searched-no-rooms-available-message');
+      noRoomsMsg.classList.remove('hide')
+    } else {
+      let clientAvailableRooms = document.querySelector('.searched-client-available-rooms')
+      clientAvailableRooms.innerText = '';
+      searchedAvailableRooms.forEach(room => {
+        let availableRoomDetails =
+          ` <ul class="single-room-details-card" id=${room.number}>
+          <li><span>Room #: </span>${room.number}</li>
+          <li><span>Room Type: </span>${room.roomType}</li>
+          <li><span>Has bidet: </span>${room.bidet}</li>
+          <li><span>Bed size: </span>${room.bedSize}</li>
+          <li><span>Number of beds: </span>${room.numBeds}</li>
+          <li><span>Cost per night: </span>${room.costPerNight}</li>
+      <button class="client-book-room-button" data-id="${room.number}" type="button" name="Book Now">Book Now</button>
+    </ul>`
+        clientAvailableRooms.insertAdjacentHTML("beforeend", availableRoomDetails)
+      })
+    }
+  },
+
+
+
+
+
 }
+
+
 
 export default domUpdates;
