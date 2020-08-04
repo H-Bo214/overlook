@@ -1,19 +1,6 @@
 let domUpdates = {
 
-  // Manager Page landing 
-  displayManagerPage(hotel) {
-    let loginHeader = document.querySelector('.login-header');
-    let loginParent = document.querySelector('.login-parent');
-    let managerHeader = document.querySelector('.manager-header');
-    let managerLandingParent = document.querySelector('.manager-landing-parent');
-    loginHeader.classList.add('hide');
-    loginParent.classList.add('hide');
-    managerHeader.classList.remove('hide');
-    managerLandingParent.classList.remove('hide');
-    this.loadManagerData(hotel);
-  },
-
-  //Client Page landing
+  //Client Page 
   displayClientPage(currentClient) {
     let loginHeader = document.querySelector('.login-header');
     let loginParent = document.querySelector('.login-parent');
@@ -23,7 +10,7 @@ let domUpdates = {
     loginParent.classList.add('hide');
     clientHeader.classList.remove('hide');
     clientLandingParent.classList.remove('hide');
-    this.loadClientData(currentClient)
+    this.loadClientData(currentClient);
   },
 
   displayClientTotalSpent(currentClient) {
@@ -40,10 +27,10 @@ let domUpdates = {
 
   displayClientBookings(currentClient) {
     let myBookings = document.querySelector('.client-past-bookings');
-    let bookings = currentClient.getMyBookings()
+    let bookings = currentClient.getMyBookings();
     bookings.forEach(booking => {
       let bookingDetails =
-    ` <section class= "past-bookings">
+        ` <section class= "past-bookings">
         <p class="label booking-id-label" for="Booking id">Booking id:</p>
         <p class="booking-id">${booking.id}</p>
         <p class="label client-past-dates" for="date">Date:</p>
@@ -52,45 +39,21 @@ let domUpdates = {
         <p>${booking.roomNumber}</p>
       </section>
     `
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-      //   ` <ul class= "past-bookings">
-      //   <label class="label booking-id-label" for="Booking id">Booking id:</label>
-      //     <li class="booking-id">${booking.id}</li>
-      //     <label class="label client-past-dates" for="date">Date:</label>
-      //     <li>${booking.date}</li>
-      //     <label class="label client-past-dates" for="room number">Room Number:</label>
-      //     <li>${booking.roomNumber}</li>
-      //   </ul>
-      // `
-      myBookings.insertAdjacentHTML("beforeend", bookingDetails)
+      myBookings.insertAdjacentHTML("beforeend", bookingDetails);
     })
   },
 
   displayLoginErrorMessage() {
     let usernameLoginInput = document.querySelector('.username-login-input');
     let passwordLoginInput = document.querySelector('.password-login-input');
-    let loginErrorMessage = document.querySelector('.login-error-msg')
+    let loginErrorMessage = document.querySelector('.login-error-msg');
     loginErrorMessage.classList.remove('hide')
-    usernameLoginInput.addEventListener('focus', (event) => loginErrorMessage.classList.add('hide'))
-    passwordLoginInput.addEventListener('focus', (event) => loginErrorMessage.classList.add('hide'))
+    usernameLoginInput.addEventListener('focus', (event) => loginErrorMessage.classList.add('hide'));
+    passwordLoginInput.addEventListener('focus', (event) => loginErrorMessage.classList.add('hide'));
   },
 
   noDateEnteredMessage() {
-    let clientDateInput = document.getElementById('client-date')
+    let clientDateInput = document.getElementById('client-date');
     let needDateMessage = document.querySelector('.need-date-message');
     needDateMessage.classList.remove('hide');
     clientDateInput.addEventListener('focus', (event) => {
@@ -98,14 +61,12 @@ let domUpdates = {
     })
   },
 
-
-  // Client Section >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
   displayAvailableRoomsFromSearch(availableRooms) {
     if (availableRooms.length === 0) {
       let noRoomsMsg = document.querySelector('.no-rooms-available-message');
       noRoomsMsg.classList.remove('hide')
     } else {
-      let clientAvailableRooms = document.querySelector('.client-available-rooms')
+      let clientAvailableRooms = document.querySelector('.client-available-rooms');
       clientAvailableRooms.innerText = '';
       availableRooms.forEach(room => {
         let availableRoomDetails =
@@ -118,7 +79,7 @@ let domUpdates = {
             <li><span>Cost per night: </span>${room.costPerNight}</li>
         <button class="client-book-room-button" data-id="${room.number}" type="button" name="Book Now">Book Now</button>
       </ul>`
-        clientAvailableRooms.insertAdjacentHTML("beforeend", availableRoomDetails)
+        clientAvailableRooms.insertAdjacentHTML("beforeend", availableRoomDetails);
       })
     }
   },
@@ -128,52 +89,19 @@ let domUpdates = {
     this.displayWelcomeMessage(currentClient);
     this.displayClientBookings(currentClient);
   },
-//>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
-  // postModal(postResult) {
-  //   let postModal = document.querySelector('.post-modal');
-  //   let clientSelectionSection = document.querySelector('.client-selection-section');
-  //   clientSelectionSection.classList.add('hide')
-  //   postModal.classList.remove('hide');
-  //   postModal.innerHTML = `
-  //     <div class="close-modal-parent">  
-  //     <p>Thank you for booking!</p>
-  //       <button class="close-modal" type ="button" name="close thank you message"data-id="close">X</button>
-  //     </div>
-  //       `
-  //   // let closeModal = document.querySelector('.close-modal');
-  //   // closeModal.addEventListener('click', function() {
-  //   //   let postModal = document.querySelector('.post-modal');
-  //   //   postModal.classList.add('hide');
-  //   // })
-  // },
 
-  // closeMessage() {
-  //   let postModal = document.querySelector('.post-modal');
-  //   let clientSelectionSection = document.querySelector('.client-selection-section');
-  //   postModal.classList.add('hide');
-  //   clientSelectionSection.classList.remove('hide')
-
-  // }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-// Manager search section >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
-
-
+  // Manager Page 
+  displayManagerPage(hotel) {
+    let loginHeader = document.querySelector('.login-header');
+    let loginParent = document.querySelector('.login-parent');
+    let managerHeader = document.querySelector('.manager-header');
+    let managerLandingParent = document.querySelector('.manager-landing-parent');
+    loginHeader.classList.add('hide');
+    loginParent.classList.add('hide');
+    managerHeader.classList.remove('hide');
+    managerLandingParent.classList.remove('hide');
+    this.loadManagerData(hotel);
+  },
 
   displaySearchedClientPage(currentUser) {
     let managerClientHeader = document.querySelector('.manager-client-header');
@@ -205,7 +133,7 @@ let domUpdates = {
 
   displaySearchedClientBookings(currentUser) {
     let myBookings = document.querySelector('.searched-client-past-bookings');
-    let bookings = currentUser.getMyBookings()
+    let bookings = currentUser.getMyBookings();
     myBookings.innerText = '';
     console.log('currentUser', currentUser);
     bookings.forEach(booking => {
@@ -219,7 +147,7 @@ let domUpdates = {
             <p>${booking.roomNumber}</p>
           </section>
         `
-      myBookings.insertAdjacentHTML("beforeend", bookingDetails)
+      myBookings.insertAdjacentHTML("beforeend", bookingDetails);
     })
   },
 
@@ -241,7 +169,7 @@ let domUpdates = {
           <li><span>Cost per night: </span>${room.costPerNight}</li>
       <button class="manager-client-book-room-button" data-id="${room.number}" type="button" name="Book Now">Book Now</button>
     </ul>`
-    searchedClientAvailableRooms.insertAdjacentHTML("beforeend", searchedAvailableRoomDetails)
+        searchedClientAvailableRooms.insertAdjacentHTML("beforeend", searchedAvailableRoomDetails)
       })
     }
   },
@@ -292,7 +220,7 @@ let domUpdates = {
     let bookingIDInput = document.querySelector('.booking-id-input');
     let cannotDeleteMessage = document.querySelector('.cannot-delete-booking-message');
     cannotDeleteMessage.classList.remove('hide')
-    bookingIDInput.addEventListener('focus',(event) => {
+    bookingIDInput.addEventListener('focus', (event) => {
       cannotDeleteMessage.classList.add('hide');
     })
   },
@@ -301,16 +229,39 @@ let domUpdates = {
     let bookingIDInput = document.querySelector('.booking-id-input');
     let noBookingIDMessage = document.querySelector('.no-bookingID-message');
     noBookingIDMessage.classList.remove('hide')
-    bookingIDInput.addEventListener('focus',(event) => {
+    bookingIDInput.addEventListener('focus', (event) => {
       noBookingIDMessage.classList.add('hide');
     })
   },
 
+  //>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
+  // postModal(postResult) {
+  //   let postModal = document.querySelector('.post-modal');
+  //   let clientSelectionSection = document.querySelector('.client-selection-section');
+  //   clientSelectionSection.classList.add('hide')
+  //   postModal.classList.remove('hide');
+  //   postModal.innerHTML = `
+  //     <div class="close-modal-parent">  
+  //     <p>Thank you for booking!</p>
+  //       <button class="close-modal" type ="button" name="close thank you message"data-id="close">X</button>
+  //     </div>
+  //       `
+  //   // let closeModal = document.querySelector('.close-modal');
+  //   // closeModal.addEventListener('click', function() {
+  //   //   let postModal = document.querySelector('.post-modal');
+  //   //   postModal.classList.add('hide');
+  //   // })
+  // },
+
+  // closeMessage() {
+  //   let postModal = document.querySelector('.post-modal');
+  //   let clientSelectionSection = document.querySelector('.client-selection-section');
+  //   postModal.classList.add('hide');
+  //   clientSelectionSection.classList.remove('hide')
+
+  // }
 
 
-
-}
-
-
+};
 
 export default domUpdates;

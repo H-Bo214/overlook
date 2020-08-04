@@ -1,4 +1,3 @@
-import domUpdates from '../src/domUpdates'
 class User {
   constructor(currentClient, allBookings, allRooms) {
     this.id = currentClient.id;
@@ -7,7 +6,7 @@ class User {
     this.clientRoomsStayedIn = this.findMyRooms(allRooms)
     this.totalMoneySpent = this.getTotalMoneySpent();
   }
-  // has test
+
   getTotalMoneySpent() {
     let totalSpent = this.clientRoomsStayedIn.reduce((roomCost, room) => {
       roomCost += room.costPerNight;
@@ -16,7 +15,7 @@ class User {
     totalSpent = Number(totalSpent.toFixed(2))
     return totalSpent;
   };
-  // has test
+
   findMyRooms(allRooms) {
     let myRooms = allRooms.reduce((allMyRooms, room) => {
       this.allClientBookings.forEach(booking => {
@@ -28,7 +27,7 @@ class User {
     }, []);
     return myRooms;
   };
-  // has test
+
   getMyBookings() {
     let myStays = this.allClientBookings.reduce((allStays, booking) => {
       let stays = {}
@@ -62,5 +61,3 @@ class User {
 };
 
 export default User;
-
-// .then(data => domUpdates.postModal(data))

@@ -9,7 +9,6 @@ class Hotel {
     this.totalRevenue = this.getTotalRevenue()
   };
 
-  // have test
   findBookedRoomsByDate(date) {
     let allBookings = this.allBookings.allBookings;
     return allBookings.reduce((bookedRooms, booking) => {
@@ -20,7 +19,6 @@ class Hotel {
     }, []);
   };
 
-// not sure if test needed
   findAvailableRoomsByDate(date, filterSelection) {
     if (filterSelection === 'none') {
      return this.findRoomsWithoutFilter(date);
@@ -30,19 +28,17 @@ class Hotel {
     }
   };
 
-//have test
   findRoomsWithFilter(date, filterSelection) {
     let allRooms = this.allRooms.allRooms;
     let bookedRooms = this.findBookedRoomsByDate(date);
     return allRooms.reduce((availableRooms, room) => {
       if (!bookedRooms.includes(room.number) && room.roomType === filterSelection) {
         availableRooms.push(room)
-        // console.log('availableRooms', availableRooms);
       }
       return availableRooms;
     }, []);
   };
- //have test
+
   findRoomsWithoutFilter(date) {
     let allRooms = this.allRooms.allRooms;
     let bookedRooms = this.findBookedRoomsByDate(date);
@@ -53,14 +49,15 @@ class Hotel {
       return availableRooms;
     }, []);
   };
-//has test
+
   findRoomsAvailableToday() {
     let allBookings = this.allBookings.allBookings;
+    let allRooms = this.allRooms.allRooms;
     let numRoomsBookedToday = allBookings.filter(booking => booking.date === this.date)
-    let numAvailableRooms = (this.allRooms.allRooms.length - numRoomsBookedToday.length)
+    let numAvailableRooms = (allRooms.length - numRoomsBookedToday.length)
     return numAvailableRooms;
   };
-//has test
+
   formatDates(date) {
     let dateArray = date.split('/');
     let month = dateArray[1];
@@ -71,7 +68,7 @@ class Hotel {
       return dateFormat;
     } 
   }
-// has test
+
   findOccupancyPercentage() {
     let percent = (this.roomsAvailableToday / this.allRooms.allRooms.length) * 100;
     let remainingPercent = 100 - percent;
@@ -79,7 +76,7 @@ class Hotel {
     num.toFixed(0)
     return `${num}`
   }
-// has test
+
   getTotalRevenue() {
     let allRooms = this.allRooms.allRooms;
     let allBookings = this.allBookings.allBookings;
@@ -99,19 +96,8 @@ class Hotel {
   findSearchedUserName(name) {
     return this.allUsers.users.find(user => user.name === name)
   }
-// this lives in index.js now.
-  // checkForFutureDate(bookingIDInput) {
-  //   console.log('in check for future date');
-  //   // console.log('hotel', hotel);
-  //   // console.log('todaysDate', todaysDate);
-  //   console.log('bookingIDinput', bookingIDInput);
-  // }
 
   deleteABooking(managerBookingID) {
-    //iterate thru all bookings, find the booking that matches the booking ID.
-    // verify that the date is greater than today.
-    // invoke the Check date method, in the check date method if the date is >, invoke delete booking.
-    // let bookingID = parseInt(managerBookingID)
     fetch('https://fe-apps.herokuapp.com/api/v1/overlook/1904/bookings/bookings', {
         method: 'DELETE',
         headers: {
@@ -125,11 +111,6 @@ class Hotel {
       .then(data => console.log(data))
       .catch(err => console.error(err))
   }
-
-
-
-
-
 
 };
 
