@@ -54,10 +54,12 @@ class User {
         })
       })
       .then(response => response.json())
-      .then(data => domUpdates.postModal(data))
+      .then(data => console.log(data))
       .catch(err => console.error(err))
   }
 
 };
 
 export default User;
+
+// .then(data => domUpdates.postModal(data))
