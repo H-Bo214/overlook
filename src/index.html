@@ -1,23 +1,15 @@
 <!DOCTYPE html>
 <html lang="en-US">
-
 <head>
   <meta charset="UTF-8" name="description" content="A hotel booking website for the Overlook Hotel">
   <title>Overlook</title>
   <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;700&display=swap" rel="stylesheet">
   <meta name="viewport" content="width=device-width, initial-scale=1">
 </head>
-
 <body>
   <main>
-
-
-
-
-    <!-- hide the header when logging in keyword 'hide' -->
     <header class="login-header">
       <h1 class="welcome-message">Welcome to Overlook</h1>
-      <!-- <h2 class="welcome-message"></h2> -->
     </header>
     <!-- Login Page -->
     <section class="login-parent ">
@@ -30,22 +22,12 @@
             <label class="label" for="password-login">Password:</label>
             <input class="password-login-input" type="password" name="password" size="30" id="password-login">
           </form>
-          <!-- hide the 🔺Check your Password & Username </p> initially logging in 'hide' -->
           <p class="login-error-msg hide ">🔺Check your Password & Username</p>
           <button class="login-button" type="button" name="login">Login</button>
         </section>
       </section>
     </section>
-
-
-
-
-
-
-
-
     <!--Client landing page -->
-    <!-- hide the <section class="client-landing-parent hide"> </p>  and the client welcome header initially when logging in as a manager -->
     <header class="client-header hide">
       <h1>Overlook Hotel</h1>
       <h2 class="client-welcome-message"></h2>
@@ -56,7 +38,7 @@
         <section class="client-past-bookings"></section>
         <h2>Total spent for your stays</h2>
         <section class="client-total-spent">
-          <p>$1000</p>
+          <p></p>
         </section>
       </aside>
       <section class="right-section">
@@ -81,29 +63,18 @@
               <button class="client-search-room-button" type="button" name="Search available rooms">Search available
                 rooms</button>
             </section>
-            <!-- will need to hide/unhide error message based on availability -->
             <p class="no-rooms-available-message hide">🔺 We apologize, there are no rooms available this date. Please
               enter
-              a different date.</p>
+              a different date.
+            </p>
           </section>
         </section>
         <p class="need-date-message hide">🔺 Please enter a date.</p>
         <h2>Available Rooms</h2>
-        <!-- <section class="post-modal hide"></section> -->
         <section class="client-available-rooms"></section>
       </section>
     </section>
-
-
-
-
-
-
-
-
-
     <!-- Manager landing page -->
-    <!-- hide the  <section class="manager-landing-parent hide"> when logging in as a customer -->
     <header class="manager-header hide">
       <h1 class="manager-admin">Overlook Hotel</h1>
       <h2>Overlook Management System</h2>
@@ -111,24 +82,28 @@
     <section class="manager-landing-parent hide">
       <aside class="manager-left-aside">
         <h2>Room Availability</h2>
-        <section class="rooms-available">
-          <!-- <p>There are currently 20 rooms available</p> -->
-        </section>
+        <section class="rooms-available"></section>
         <h2>Current Occupancy</h2>
-        <section class="current-occupancy">
-          <!-- <p>We are currently at 70% occupancy</p> -->
-        </section>
+        <section class="current-occupancy"></section>
         <h2>Total revenue today</h2>
         <section class="total-revenue-today">
-          <p>$1000</p>
+          <p></p>
         </section>
-
+        <section class="manager-client-header hide">
+          <h2 class="searched-client-welcome-message"></h2>
+        </section>
+        <aside class="manager-search-left-aside hide">
+          <h2>Bookings</h2>
+          <section class="searched-client-past-bookings"></section>
+          <h2>Total spent for your stays</h2>
+          <section class="searched-client-total-spent">
+            <p>$1000</p>
+          </section>
+        </aside>
       </aside>
       <section class="manager-right-section">
         <section class="manager-selection-section">
           <section class="manager-client-search-parent">
-
-
             <h2>Client Search</h2>
             <form class="client-search-section">
               <label class="label" for="Client Name">Client name:</label>
@@ -136,7 +111,6 @@
               <button class="manager-client-search-button" type="button" name="Search">Search client</button>
             </form>
           </section>
-
           <section class="delete-booking-parent">
             <h2>Delete a booking</h2>
             <form class="delete-booking-section">
@@ -145,32 +119,13 @@
               <button class="delete-booking-button" type="button" name="Delete booking">Delete Booking</button>
             </form>
           </section>
-
         </section>
         <p class="no-client-name-message hide">🔺 Please enter a client name.</p>
         <p class="no-bookingID-message hide">🔺 Please enter a booking id.</p>
         <p class="cannot-delete-booking-message hide">🔺 You cannot delete a prior booking.</p>
         <h2>Client History</h2>
         <section class="client-details-section">
-
-
-
-
-          <header class="manager-client-header hide">
-            <!-- <h1>Overlook Hotel</h1> -->
-            <h2 class="searched-client-welcome-message"></h2>
-          </header>
-
-
           <section class="manager-client-landing-parent hide">
-            <aside class="manager-search-left-aside">
-              <h2>Bookings</h2>
-              <section class="searched-client-past-bookings"></section>
-              <h2>Total spent for your stays</h2>
-              <section class="searched-client-total-spent">
-                <p>$1000</p>
-              </section>
-            </aside>
             <section class="manager-search-right-section">
               <section class="searched-client-selection-section">
                 <section class="searched-filter-rooms-parent">
@@ -193,10 +148,10 @@
                       available
                       rooms</button>
                   </section>
-                  <!-- will need to hide/unhide error message based on availability -->
                   <p class="searched-no-rooms-available-message hide">🔺 We apologize, there are no rooms available this
                     date. Please enter
-                    a different date.</p>
+                    a different date.
+                  </p>
                 </section>
               </section>
               <p class="manager-need-date-message hide">🔺 Please enter a date.</p>
@@ -208,10 +163,6 @@
         </section>
       </section>
     </section>
-
-
-
   </main>
 </body>
-
 </html>

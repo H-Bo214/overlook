@@ -13,7 +13,8 @@ class User {
       roomCost += room.costPerNight;
       return roomCost;
     }, 0);
-    return totalSpent.toFixed(2);
+    totalSpent = Number(totalSpent.toFixed(2))
+    return totalSpent;
   };
   // has test
   findMyRooms(allRooms) {

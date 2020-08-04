@@ -162,11 +162,11 @@ describe('User', function () {
   });
 
   it('should have the total money spent on stays', function () {
-    expect(user.totalMoneySpent).to.equal('1000.00');
+    expect(user.totalMoneySpent).to.equal(1000);
   });
 
   it('should have a method to get total money spent', function () {
-    expect(user.getTotalMoneySpent()).to.equal('1000.00');
+    expect(user.getTotalMoneySpent()).to.equal(1000);
   });
 
   it('should have a method to get rooms stayed in', function () {
