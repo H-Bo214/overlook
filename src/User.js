@@ -33,6 +33,7 @@ class User {
       let stays = {}
       stays.date = booking.date;
       stays.roomNumber = booking.roomNumber;
+      stays.id = booking.id;
       allStays.push(stays)
       return allStays;
     }, []);

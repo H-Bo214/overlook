@@ -79,25 +79,44 @@ class Hotel {
     num.toFixed(0)
     return `${num}`
   }
-
+// has test
   getTotalRevenue() {
-    let matchingBookings = this.allBookings.allBookings.filter(booking => booking.date === this.date);
-    let profits = matchingBookings.reduce((acc, match) => {
-      this.allRooms.allRooms.forEach(room => {
+    let allRooms = this.allRooms.allRooms;
+    let allBookings = this.allBookings.allBookings;
+    let matchingBookings = allBookings.filter(booking => booking.date === this.date);
+    let revenue = matchingBookings.reduce((todaysTotal, match) => {
+      allRooms.forEach(room => {
         if (room.number === match.roomNumber) {
-          acc = room.costPerNight + acc
-        }
-      })
-      return acc
-    }, 0)
-    return profits
+          todaysTotal += room.costPerNight; 
+        };
+      });
+      return todaysTotal;
+    }, 0);
+    return revenue;
   }
 
-  findSearchedUser(name) {
+  findSearchedUserName(name) {
     return this.allUsers.users.find(user => user.name === name)
   }
 
-
+  deleteABooking(managerBookingID) {
+    //iterate thru all bookings, find the booking that matches the booking ID.
+    // verify that the date is greater than today.
+    // invoke the Check date method, in the check date method if the date is >, invoke delete booking.
+    let bookingID = parseInt(managerBookingID)
+    fetch('https://fe-apps.herokuapp.com/api/v1/overlook/1904/bookings/bookings', {
+        method: 'DELETE',
+        headers: {
+          'Content-Type': 'application/json'
+        },
+        body: JSON.stringify({
+          id: bookingID
+        })
+      })
+      .then(response => response.json())
+      .then(data => console.log(data))
+      .catch(err => console.error(err))
+  }
 
 
 

@@ -149,7 +149,7 @@ header {
 }
 
 .manager-landing-parent {
-  height: 75em;
+  // height: 75em;
 }
 
 .rooms-available,
@@ -174,10 +174,10 @@ ul {
   overflow-x: scroll;
   overflow: scroll;
   width: auto;
-  height: 53%;
+  // height: 53%;
 
   @include ipad-pro-size {
-    height: 70%;
+    // height: 70%;
   }
 }
 
@@ -275,15 +275,15 @@ ul {
   width: 60%;
   @include displayStyle(flex, column);
   flex-grow: 2;
-  height: 88vh;
+  // height: 88vh;
 
   @include ipad-pro-size {
-    height: 92vh;
+    // height: 92vh;
   }
 
   @include iphone-size {
     width: 22.5em;
-    height: 51em;
+    // height: 51em;
   }
 }
 
@@ -424,7 +424,7 @@ span {
   // border: 1px solid #fff;
   border-radius: $primary-box-border-radius;
   flex-direction: column;
-  height: 50em;
+  // height: 50em;
 }
 
 .client-overview {
@@ -711,6 +711,8 @@ span {
       width: 22.5em;
     }
   }
+
+  // .no-client-name-message{}
 // .header {}
 // .login-parent {}
 

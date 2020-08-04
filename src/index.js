@@ -15,7 +15,7 @@ let loginButton = document.querySelector('.login-button');
 let rightSection = document.querySelector('.right-section')
 let managerRightSection = document.querySelector('.manager-right-section');
 let date = new Date().toLocaleDateString();
-console.log('dateQ', date);
+// console.log('dateQ', date);
 rightSection.addEventListener('click', function() {
   clientButtonHandler(event)
 });
@@ -133,33 +133,43 @@ function checkInputValue(dateValue) {
 }
 
 function managerButtonHandler(event) {
-  let displaySearchedUser = document.querySelector('.client-details-section')
+  let managerDateValue = document.getElementById('manager-client-date').value;
+  let bookingIDInput = document.querySelector('.booking-id-input').value;
   if (event.target.classList.contains('manager-client-search-button')) {
-    // console.log('if con', event.target.classList.contains('manager-client-search-button'))
     let name = document.querySelector('.manager-client-name-input').value;
-    // console.log('name', name);
-    // console.log('rooms', rooms);
-    // console.log('bookings', bookings);
-    let searchedUser = hotel.findSearchedUser(name)
-    currentUser = new User(searchedUser, bookings.allBookings, rooms.allRooms)
-    // console.log('currentUser', currentUser);
-    domUpdates.displaySearchedUserInfo(displaySearchedUser, currentUser)
+    searchedNameCheckInputValue(name)
+  }
+  if (event.target.classList.contains('manager-client-search-room-button')) {
+    searchedDateCheckInputValue(managerDateValue)
+  }
+  if (event.target.closest(".searched-client-available-rooms")) {
+    let managerBookId = event.target.closest(".manager-client-book-room-button").getAttribute("data-id");
+     currentUser.postBooking(managerBookId, managerDateValue)
+  }
+  if(event.target.classList.contains('delete-booking-button')) {
+    hotel.deleteABooking(bookingIDInput);
   }
 
-  let dateValue = document.getElementById('manager-client-date').value;
-  if (event.target.classList.contains('manager-client-search-room-button')) {
-    searchedCheckInputValue(dateValue)
+}
+
+function searchedNameCheckInputValue(name) {
+  if (name === '') {
+    domUpdates.noClientNameEntered()
+  } else {
+    let searchedUser = hotel.findSearchedUserName(name)
+    console.log('searchedUser', searchedUser);
+    currentUser = new User(searchedUser, bookings.allBookings, rooms.allRooms)
+    domUpdates.displaySearchedClientPage(currentUser)
   }
 }
 
-function searchedCheckInputValue(dateValue) {
-  if (dateValue === '') {
-    domUpdates.noDateEnteredMessage()
+function searchedDateCheckInputValue(managerDateValue) {
+  if (managerDateValue === '') {
+    domUpdates.noDateEnteredMessageManager()
   } else {
     let searchedFilterSelection  = document.querySelector('.searched-filter-input')
-    let searchedAvailableRooms = hotel.findAvailableRoomsByDate(dateValue, searchedFilterSelection.value);    
+    let searchedAvailableRooms = hotel.findAvailableRoomsByDate(managerDateValue, searchedFilterSelection.value);    
     domUpdates.displayManagerAvailableRoomsFromSearch(searchedAvailableRooms)
     searchedAvailableRooms = [];
   }
 }
-

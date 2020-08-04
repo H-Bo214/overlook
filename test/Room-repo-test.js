@@ -50,11 +50,11 @@ describe('Rooms', function () {
     allRooms = new RoomRepo(rooms);
   });
 
-  it.only('should be a function', function () {
+  it('should be a function', function () {
     expect(RoomRepo).to.be.a('function');
   });
 
-  it.only('should be an instance of Rooms', function () {
+  it('should be an instance of Rooms', function () {
     expect(allRooms).to.be.an.instanceof(RoomRepo);
   });
 
