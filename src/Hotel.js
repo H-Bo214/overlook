@@ -98,19 +98,26 @@ class Hotel {
   findSearchedUserName(name) {
     return this.allUsers.users.find(user => user.name === name)
   }
+// this lives in index.js now.
+  // checkForFutureDate(bookingIDInput) {
+  //   console.log('in check for future date');
+  //   // console.log('hotel', hotel);
+  //   // console.log('todaysDate', todaysDate);
+  //   console.log('bookingIDinput', bookingIDInput);
+  // }
 
   deleteABooking(managerBookingID) {
     //iterate thru all bookings, find the booking that matches the booking ID.
     // verify that the date is greater than today.
     // invoke the Check date method, in the check date method if the date is >, invoke delete booking.
-    let bookingID = parseInt(managerBookingID)
+    // let bookingID = parseInt(managerBookingID)
     fetch('https://fe-apps.herokuapp.com/api/v1/overlook/1904/bookings/bookings', {
         method: 'DELETE',
         headers: {
           'Content-Type': 'application/json'
         },
         body: JSON.stringify({
-          id: bookingID
+          id: managerBookingID
         })
       })
       .then(response => response.json())

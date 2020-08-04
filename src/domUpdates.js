@@ -104,26 +104,30 @@ let domUpdates = {
     this.displayClientBookings(currentClient);
   },
 //>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
-  postModal(postResult) {
-    let postModal = document.querySelector('.post-modal');
-
-    postModal.classList.remove('hide');
-    postModal.innerHTML = `
-      <div class="close-modal-parent">  
-      <p>Thank you for booking!</p>
-        <button class="close-modal" type ="button" name="close thank you message"data-id="close">X</button>
-      </div>
-        `
-    // let closeModal = document.querySelector('.close-modal');
-    // closeModal.addEventListener('click', function closeMessage() {
-    //   let postModal = document.querySelector('.post-modal');
-    //   postModal.classList.add('hide');
-    // })
-  },
+  // postModal(postResult) {
+  //   let postModal = document.querySelector('.post-modal');
+  //   let clientSelectionSection = document.querySelector('.client-selection-section');
+  //   clientSelectionSection.classList.add('hide')
+  //   postModal.classList.remove('hide');
+  //   postModal.innerHTML = `
+  //     <div class="close-modal-parent">  
+  //     <p>Thank you for booking!</p>
+  //       <button class="close-modal" type ="button" name="close thank you message"data-id="close">X</button>
+  //     </div>
+  //       `
+  //   // let closeModal = document.querySelector('.close-modal');
+  //   // closeModal.addEventListener('click', function() {
+  //   //   let postModal = document.querySelector('.post-modal');
+  //   //   postModal.classList.add('hide');
+  //   // })
+  // },
 
   // closeMessage() {
   //   let postModal = document.querySelector('.post-modal');
+  //   let clientSelectionSection = document.querySelector('.client-selection-section');
   //   postModal.classList.add('hide');
+  //   clientSelectionSection.classList.remove('hide')
+
   // }
 
 
@@ -144,11 +148,7 @@ let domUpdates = {
 
 // Manager search section >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
 
-  // displaySearchedUserInfo(currentUser) {
-  //   let displaySearchedUser = document.querySelector('.client-details-section')
-  //   console.log('this.displaySearchedClientPage(currentUser)', this.displaySearchedClientPage(currentUser));
-  //   // displaySearchedUser.insertAdjacentHTML('beforeend', this.displaySearchedClientPage(currentUser))
-  // },
+
 
   displaySearchedClientPage(currentUser) {
     let managerClientHeader = document.querySelector('.manager-client-header');
@@ -259,6 +259,28 @@ let domUpdates = {
       needClientNameMessage.classList.add('hide');
     })
   },
+
+  displayCannotDeleteBookingMessage() {
+    let bookingIDInput = document.querySelector('.booking-id-input');
+    let cannotDeleteMessage = document.querySelector('.cannot-delete-booking-message');
+    cannotDeleteMessage.classList.remove('hide')
+    bookingIDInput.addEventListener('focus',(event) => {
+      cannotDeleteMessage.classList.add('hide');
+    })
+  },
+
+  displayNeedBookingIDMessage() {
+    let bookingIDInput = document.querySelector('.booking-id-input');
+    let noBookingIDMessage = document.querySelector('.no-bookingID-message');
+    noBookingIDMessage.classList.remove('hide')
+    bookingIDInput.addEventListener('focus',(event) => {
+      noBookingIDMessage.classList.add('hide');
+    })
+  },
+
+
+
+
 }
 
 
