@@ -92,6 +92,7 @@ class Hotel {
       });
       return todaysTotal;
     }, 0);
+    revenue = Number(revenue.toFixed(2))
     return revenue;
   }
 

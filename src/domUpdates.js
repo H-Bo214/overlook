@@ -43,14 +43,39 @@ let domUpdates = {
     let bookings = currentClient.getMyBookings()
     bookings.forEach(booking => {
       let bookingDetails =
-        ` <ul class= "past-bookings">
-        <li class="booking-id">${booking.id}</li>
-          <label class="label client-past-dates" for="date">Date:</label>
-          <li>${booking.date}</li>
-          <label class="label client-past-dates" for="room number">Room Number:</label>
-          <li>${booking.roomNumber}</li>
-        </ul>
-      `
+    ` <section class= "past-bookings">
+        <p class="label booking-id-label" for="Booking id">Booking id:</p>
+        <p class="booking-id">${booking.id}</p>
+        <p class="label client-past-dates" for="date">Date:</p>
+        <p>${booking.date}</p>
+        <p class="label client-past-dates" for="room number">Room Number:</p>
+        <p>${booking.roomNumber}</p>
+      </section>
+    `
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+      //   ` <ul class= "past-bookings">
+      //   <label class="label booking-id-label" for="Booking id">Booking id:</label>
+      //     <li class="booking-id">${booking.id}</li>
+      //     <label class="label client-past-dates" for="date">Date:</label>
+      //     <li>${booking.date}</li>
+      //     <label class="label client-past-dates" for="room number">Room Number:</label>
+      //     <li>${booking.roomNumber}</li>
+      //   </ul>
+      // `
       myBookings.insertAdjacentHTML("beforeend", bookingDetails)
     })
   },
@@ -152,8 +177,10 @@ let domUpdates = {
 
   displaySearchedClientPage(currentUser) {
     let managerClientHeader = document.querySelector('.manager-client-header');
+    let managerSearchLeftAside = document.querySelector('.manager-search-left-aside')
     let managerClientLandingParent = document.querySelector('.manager-client-landing-parent');
     managerClientHeader.classList.remove('hide');
+    managerSearchLeftAside.classList.remove('hide');
     managerClientLandingParent.classList.remove('hide');
     this.loadSearchedClientData(currentUser)
 
@@ -183,14 +210,15 @@ let domUpdates = {
     console.log('currentUser', currentUser);
     bookings.forEach(booking => {
       let bookingDetails =
-        ` <ul class= "past-bookings" id="${booking.id}">
-        <li class="booking-id">${booking.id}</li>
-        <label class="label client-past-dates" for="date">Date:</label>
-        <li>${booking.date}</li>
-        <label class="label client-past-dates" for="room number">Room Number:</label>
-        <li>${booking.roomNumber}</li>
-      </ul>
-    `
+        ` <section class= "searched-past-bookings" id="${booking.id}">
+          <p class="label client-past-dates" for="booking id">Booking Id:</p>
+            <p class="booking-id">${booking.id}</p>
+            <p class="label client-past-dates" for="date">Date:</p>
+            <p>${booking.date}</p>
+            <p class="label client-past-dates" for="room number">Room Number:</p>
+            <p>${booking.roomNumber}</p>
+          </section>
+        `
       myBookings.insertAdjacentHTML("beforeend", bookingDetails)
     })
   },
@@ -227,13 +255,13 @@ let domUpdates = {
   displayNumRoomsAvailableToday(hotel) {
     let roomsAvailable = document.querySelector('.rooms-available');
     let totalRoomsAvailable = hotel.findRoomsAvailableToday();
-    roomsAvailable.innerHTML = `<p class= "total-rooms">There are currently ${totalRoomsAvailable} rooms available.</p>`;
+    roomsAvailable.innerHTML = `<p class= "total-rooms">There are currently<span> ${totalRoomsAvailable} </span>rooms available.</p>`;
   },
 
   displayPercentOccupancy(hotel) {
     let currentOccupancy = document.querySelector('.current-occupancy');
     let percentRoomsAvailable = hotel.findOccupancyPercentage();
-    currentOccupancy.innerHTML = `<p class= "percent-occupied">We are currently at ${percentRoomsAvailable}% occupancy.</p>`;
+    currentOccupancy.innerHTML = `<p class= "percent-occupied">We are currently at<span> ${percentRoomsAvailable}% </span>occupancy.</p>`;
   },
 
   displayTodaysRevenue(hotel) {

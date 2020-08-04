@@ -9,18 +9,12 @@
   font-family: 'DM Sans', sans-serif;
 }
 
-.need-date-message {
-  text-align: center;
-  font-size: 19px;
-}
-
 html {
   background: url(../images/hotel-red.jpg) no-repeat center center fixed;
   -webkit-background-size: cover;
   -moz-background-size: cover;
   -o-background-size: cover;
   background-size: cover;
-  // overflow: hidden;
   opacity: 0.91;
 
   @include iphone-size {
@@ -99,11 +93,10 @@ h4 {
 }
 
 .login-error-msg {
-  color: #fd1d1d;
   font-size: 15px;
   margin-top: 0;
   text-align: center;
-  color: #fff;
+
 }
 
 .login-button {
@@ -130,10 +123,6 @@ header {
   }
 }
 
-// .manager-landing-parent {
-//   display: flex;
-//   justify-content: space-around;
-// }
 .manager-landing-parent,
 .client-landing-parent {
   display: flex;
@@ -142,14 +131,11 @@ header {
   background: #000;
   opacity: 0.7;
   padding-top: 37px;
+
   @include iphone-size {
     flex-direction: column;
     opacity: 0.8;
   }
-}
-
-.manager-landing-parent {
-  // height: 75em;
 }
 
 .rooms-available,
@@ -174,11 +160,6 @@ ul {
   overflow-x: scroll;
   overflow: scroll;
   width: auto;
-  // height: 53%;
-
-  @include ipad-pro-size {
-    // height: 70%;
-  }
 }
 
 .client-prior-stays-section {
@@ -199,15 +180,10 @@ ul {
 }
 
 .delete-booking-button,
-.manager-client-search-button {
-  cursor: pointer;
-  margin: 20px 20px;
-  font-size: 21px;
-  background: #fff;
-  border-radius: 3px;
-  color: black;
-}
-
+.manager-client-search-button,
+.manager-client-book-room-button,
+.manager-client-search-room-button,
+.client-search-room-button,
 .client-book-room-button {
   cursor: pointer;
   margin: 20px 20px;
@@ -220,39 +196,18 @@ ul {
   &:hover {
     transition: 1.2s ease;
     background: #000;
-    color: #ff1818;
+    color: #fff;
     border: 1px solid #fff;
-  }
-}
-
-.client-search-room-button {
-  cursor: pointer;
-  margin: 20px 20px;
-  font-size: 21px;
-  padding: 9px;
-  border-radius: $primary-box-border-radius;
-  margin-top: 25px;
-  background: #fff;
-
-  &:hover {
-    transition: 1.2s ease;
-    background: #000;
-    color: #ff1818;
-    border: 1px solid #fff
   }
 }
 
 .manager-client-landing-parent {
   display: flex;
-  // flex-direction: column;
+
   @include iphone-size {
     flex-direction: column
   }
-  
-}
 
-.hide {
-  display: none;
 }
 
 .right-section {
@@ -275,15 +230,9 @@ ul {
   width: 60%;
   @include displayStyle(flex, column);
   flex-grow: 2;
-  // height: 88vh;
-
-  @include ipad-pro-size {
-    // height: 92vh;
-  }
 
   @include iphone-size {
     width: 22.5em;
-    // height: 51em;
   }
 }
 
@@ -319,28 +268,49 @@ span {
   align-items: center;
   border: 1px solid black;
   border-radius: 20px;
-  padding: 10px;
 }
 
-.manager-client-search-parent,
-.manager-booking-parent {
+.manager-client-search-parent {
   @include displayStyle(flex, column);
-  padding: 1em;
   border-radius: $secondary-box-border-radius;
   border: 1px solid #fff;
 }
 
-.client-date-selection,
-.booking-id-input {
-  width: 53%;
+.booking-id {
+  padding-bottom: .4rem;
 }
 
 .client-date-selection {
+  width: 61%;
+  padding: .5rem;
+  border-radius: 5px;
+  font-size: 18px;
+
   @include ipad-size {
     width: 55%;
     padding: 7px;
   }
 }
+
+.booking-id-input,
+.manager-client-date-selection,
+.manager-client-name-input {
+  width: 77%;
+  padding: .5rem;
+  border-radius: 5px;
+  font-size: 18px;
+
+  @include ipad-size {
+    padding: 7px;
+  }
+}
+
+.manager-client-date-selection {
+  @include ipad-pro-size {
+    width: 40%;
+  }
+}
+
 
 .single-prior-stay-card {
   border: 1px solid black;
@@ -352,12 +322,7 @@ span {
   border: 1px solid #fff;
   border-radius: $secondary-box-border-radius;
   margin: 6px;
-  width: 17em;
-  height: 19em;
 
-  @include ipad-pro-size {
-    width: 17em;
-  }
 }
 
 .filter-rooms-parent {
@@ -376,30 +341,24 @@ span {
   }
 }
 
-
-// .client-selection-section {
-//   display: flex;
-//   justify-content: space-evenly;
-//   margin-bottom: 5em;
-// }
-
-.manager-selection-section  {
+.manager-selection-section {
   display: flex;
   justify-content: space-evenly;
+
   @include iphone-size {
     flex-direction: column;
+    margin: 2rem;
   }
 }
 
 .delete-booking-parent {
   border: 1px solid #fff;
-  width: 25%;
   border-radius: 10px;
-  display: flex;
-  flex-direction: column;
   justify-content: center;
+  @include displayStyle(flex, column);
+
   @include iphone-size {
-    width: 100%;
+    margin-top: 2rem
   }
 }
 
@@ -409,8 +368,8 @@ span {
   text-align: center;
   justify-content: center;
   align-items: center;
-  padding: 1em;
 }
+
 .client-info-section {
   border: 1px solid black;
   width: 25%;
@@ -419,12 +378,7 @@ span {
 }
 
 .client-details-section {
-  display: flex;
-  // justify-content: space-evenly;
-  // border: 1px solid #fff;
-  border-radius: $primary-box-border-radius;
-  flex-direction: column;
-  // height: 50em;
+  @include displayStyle(flex, column);
 }
 
 .client-overview {
@@ -463,13 +417,6 @@ span {
   align-items: center;
 }
 
-.client-past-bookings,
-.client-todays-bookings,
-.client-upcoming-bookings {
-  display: flex;
-  justify-content: center;
-}
-
 .client-total {
   font-size: 30px;
 
@@ -491,6 +438,7 @@ span {
   overflow-x: scroll;
   overflow: scroll;
   width: 40%;
+  min-width: 18em;
   height: 75%;
 
   @include ipad-pro-size {
@@ -501,14 +449,16 @@ span {
 
   @include ipad-size {
     margin-bottom: 2em;
-    width: 15em;
-    height: 56%;
+    width: 17em;
+    height: 53%;
   }
 }
 
 .past-bookings {
   border: 1px solid #fff;
   border-radius: $secondary-box-border-radius;
+  padding: 1rem 2rem;
+  margin: 1rem;
 
   @include ipad-pro-size {
     width: 13em;
@@ -517,7 +467,6 @@ span {
 
 .post-modal {
   width: 356px;
-  // border: 1px solid #fff;
   border-radius: 20px;
   // position: absolute;
   display: flex;
@@ -553,28 +502,27 @@ span {
 
 .manager-search-left-aside {
   flex-grow: 1;
-  @include displayStyle(flex, column);
   align-items: center;
   height: 70vh;
-  width: 40%;
   text-align: center;
-  @include iphone-size {
-    width: 100%;
+
+  @include ipad-pro-size {
+    @include displayStyle(flex, column);
   }
 }
 
 
 
 .searched-client-past-bookings {
-  display: flex;
-  flex-wrap: wrap;
   border: 1px solid #fff;
   justify-content: space-evenly;
   border-radius: 20px;
-  overflow-x: scroll;
   overflow: scroll;
-  width: 54%;
   height: 44%;
+
+  @include iphone-size {
+    height: 60%;
+  }
 }
 
 .manager-search-right-section {
@@ -583,6 +531,7 @@ span {
   flex-direction: column;
   flex-grow: 2;
   height: 88vh;
+
   @include iphone-size {
     width: 100%;
   }
@@ -598,6 +547,11 @@ span {
   display: flex;
   justify-content: space-evenly;
   margin-bottom: 1em;
+
+  @include ipad-pro-size {
+    flex-direction: column;
+  }
+
   @include iphone-size {
     flex-direction: column;
   }
@@ -607,11 +561,10 @@ span {
 .searched-filter-rooms-parent {
   @include displayStyle(flex, column);
   padding: 1em;
-  border: 1px solid black;
-  border-radius: 20px;
 
   @include ipad-pro-size {
     height: 68%;
+    align-items: center;
   }
 
   @include ipad-size {
@@ -637,87 +590,81 @@ span {
   align-items: center;
 }
 
-.manager-client-date-selection {
-  width: 53%;
+.searched-no-rooms-available-message {
+  color: #DC143C;
+}
+
+.searched-post-modal {
+  width: 356px;
+  border-radius: 20px;
+  position: absolute;
+  display: flex;
+  justify-content: center;
+  background: #000;
+}
+
+.searched-client-available-rooms {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  overflow-x: scroll;
+  overflow: scroll;
+  width: auto;
+
+  @include ipad-pro-size {
+    height: 70%;
+    justify-content: space-evenly;
+  }
+
   @include ipad-size {
-    width: 55%;
-    padding: 7px;
+    justify-content: space-evenly;
   }
 }
-  .manager-client-search-room-button {
-    cursor: pointer;
-    margin: 20px 20px;
-    font-size: 21px;
-    padding: 9px;
-    border-radius: $primary-box-border-radius;
-    margin-top: 25px;
-    background: #fff;
-  
-    &:hover {
-      transition: 1.2s ease;
-      background: #000;
-      color: #ff1818;
-      border: 1px solid #fff
-    }
+
+.manager-left-aside {
+  flex-grow: 1;
+  @include displayStyle(flex, column);
+  align-items: center;
+  width: 40%;
+  text-align: center;
+
+  @include iphone-size {
+    width: 22.5em;
   }
+}
 
-  .searched-no-rooms-available-message {
-    color: #DC143C;
+.searched-past-bookings {
+  margin: 3rem;
+  width: 75%;
+  border: 1px solid #fff;
+  border-radius: 10px;
+
+  @include ipad-pro-size {
+    width: 13em;
   }
+}
 
-  .manager-need-date-message {
-    text-align: center;
-    font-size: 19px;
-  }
+.total-rooms,
+.percent-occupied {
+  font-size: 20px;
+}
 
-  .searched-post-modal {
-    width: 356px;
-    // border: 1px solid #fff;
-    border-radius: 20px;
-    position: absolute;
-    display: flex;
-    justify-content: center;
-    background: #000;
-  }
+.todays-revenue {
+  font-size: 38px;
+}
 
-  .searched-client-available-rooms {
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: space-evenly;
-    overflow-x: scroll;
-    overflow: scroll;
-    width: auto;
-    height: 53%;
-  
-    @include ipad-pro-size {
-      height: 70%;
-    }
-  }
+.total-revenue-today {
+  margin-bottom: 2rem;
+}
 
-  .manager-left-aside {
-    flex-grow: 1;
-    @include displayStyle(flex, column);
-    align-items: center;
-    height: 88vh;
-    width: 40%;
-    text-align: center;
-  
-    @include ipad-pro-size {
-      height: 92vh;
-      padding-top: 1em;
-    }
-  
-    @include iphone-size {
-      width: 22.5em;
-    }
-  }
+.need-date-message,
+.manager-need-date-message,
+.no-bookingID-message,
+.no-client-name-message {
+  text-align: center;
+  font-size: 20px;
+}
 
-  // .no-client-name-message{}
-// .header {}
-// .login-parent {}
-
-// .login-header {}
-
-// .manager-header {}
-
-// .client-header {}
+.hide {
+  display: none;
+}
