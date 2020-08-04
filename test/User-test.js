@@ -2,7 +2,7 @@ import { expect } from 'chai';
 import User from '../src/User';
 
 describe('User', function () {
-  let user, myBookings, myRooms, myMoneySpent, allBookings, allRooms, myBookingDetails;
+  let user, user2, myBookings, myRooms, myMoneySpent, allBookings, allRooms, myBookingDetails, notMyBookings, notMyRooms;
 
   beforeEach(function () {
     myBookings = [{
@@ -21,6 +21,38 @@ describe('User', function () {
       }
     ];
 
+    notMyBookings = [{
+      "id": "5fwrgu4i7k55hl6t6",
+      "userID": 13,
+      "date": "2020/01/10",
+      "roomNumber": 12,
+      "roomServiceCharges": []
+    },
+    {
+      "id": "5fwrgu4i7k55hl6t7",
+      "userID": 13,
+      "date": "2020/02/16",
+      "roomNumber": 7,
+      "roomServiceCharges": []
+    },
+  ];
+
+  notMyRooms = [ {
+    "number": 25,
+    "roomType": "suite",
+    "bidet": false,
+    "bedSize": "full",
+    "numBeds": 2,
+    "costPerNight": 500
+  },
+  {
+    "number": 12,
+    "roomType": "single room",
+    "bidet": false,
+    "bedSize": "king",
+    "numBeds": 1,
+    "costPerNight": 491.14
+  },]
     myRooms = [{
         "number": 15,
         "roomType": "residential suite",
@@ -120,6 +152,7 @@ describe('User', function () {
 
     myMoneySpent = "1000.00";
 
+
     myBookingDetails = [{
       "date": "2020/04/22",
       "id": "5fwrgu4i7k55hl6sz",
@@ -135,6 +168,10 @@ describe('User', function () {
       "name": "Kennedi Emard"
     }, allBookings, allRooms)
 
+    user2 = new User({
+      "id": 20,
+      "name": "Kennedi Emard"
+    }, notMyBookings, notMyRooms)
   });
 
   it('should be a function', function () {
@@ -157,12 +194,24 @@ describe('User', function () {
     expect(user.allClientBookings).to.deep.equal(myBookings);
   });
 
-  it('should have all of this users rooms they have stayed in', function () {
+  it('should only have the correct users bookings', function () {
+    expect(user2.allClientBookings).to.deep.equal([]);
+  });
+
+  it('should have all of this users rooms stayed in', function () {
     expect(user.clientRoomsStayedIn).to.deep.equal(myRooms);
+  });
+
+  it('should only have the correct users rooms stayed in', function () {
+    expect(user2.clientRoomsStayedIn).to.deep.equal([]);
   });
 
   it('should have the total money spent on stays', function () {
     expect(user.totalMoneySpent).to.equal(1000);
+  });
+
+  it('should have the total money spent if the correct user', function () {
+    expect(user2.totalMoneySpent).to.equal(0);
   });
 
   it('should have a method to get total money spent', function () {
