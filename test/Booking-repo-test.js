@@ -52,11 +52,11 @@ describe('BookingRepo', function () {
     bookings = new BookingRepo(allBookings);
   });
 
-  it.only('should be a function', function () {
+  it('should be a function', function () {
     expect(BookingRepo).to.be.a('function');
   });
 
-  it.only('should be an instance of BookingRepo', function () {
+  it('should be an instance of BookingRepo', function () {
     expect(bookings).to.be.an.instanceof(BookingRepo);
   });
 

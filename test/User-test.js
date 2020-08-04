@@ -122,9 +122,11 @@ describe('User', function () {
 
     myBookingDetails = [{
       "date": "2020/04/22",
+      "id": "5fwrgu4i7k55hl6sz",
       "roomNumber": 15
     }, {
       "date": "2020/01/24",
+      "id": "5fwrgu4i7k55hl6t5",
       "roomNumber": 24
     }];
 
@@ -139,39 +141,39 @@ describe('User', function () {
     expect(User).to.be.a('function');
   });
 
-  it.only('should be an instance of User', function () {
+  it('should be an instance of User', function () {
     expect(user).to.be.an.instanceof(User);
   });
 
-  it.only('should have an id', function () {
+  it('should have an id', function () {
     expect(user.id).to.equal(20);
   });
 
-  it.only('should have a name', function () {
+  it('should have a name', function () {
     expect(user.name).to.equal('Kennedi Emard');
   });
 
-  it.only('should have all of this users bookings', function () {
+  it('should have all of this users bookings', function () {
     expect(user.allClientBookings).to.deep.equal(myBookings);
   });
 
-  it.only('should have all of this users rooms they have stayed in', function () {
+  it('should have all of this users rooms they have stayed in', function () {
     expect(user.clientRoomsStayedIn).to.deep.equal(myRooms);
   });
 
-  it.only('should have the total money spent on stays', function () {
+  it('should have the total money spent on stays', function () {
     expect(user.totalMoneySpent).to.equal('1000.00');
   });
 
-  it.only('should have a method to get total money spent', function () {
+  it('should have a method to get total money spent', function () {
     expect(user.getTotalMoneySpent()).to.equal('1000.00');
   });
 
-  it.only('should have a method to get rooms stayed in', function () {
+  it('should have a method to get rooms stayed in', function () {
     expect(user.findMyRooms(allRooms)).to.deep.equal(myRooms);
   });
 
-  it.only('should get the date and room number of my bookings', function () {
+  it('should get the date, room number and confirmation number of my bookings', function () {
     expect(user.getMyBookings()).to.deep.equal(myBookingDetails);
   });
 

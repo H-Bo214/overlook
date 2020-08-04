@@ -44,6 +44,7 @@ let domUpdates = {
     bookings.forEach(booking => {
       let bookingDetails =
         ` <ul class= "past-bookings">
+        <li class="booking-id">${booking.id}</li>
           <label class="label client-past-dates" for="date">Date:</label>
           <li>${booking.date}</li>
           <label class="label client-past-dates" for="room number">Room Number:</label>
@@ -143,9 +144,11 @@ let domUpdates = {
 
 // Manager search section >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
 
-  displaySearchedUserInfo(displaySearchedUser, currentUser) {
-    displaySearchedUser.insertAdjacentHTML('beforeend', this.displaySearchedClientPage(currentUser))
-  },
+  // displaySearchedUserInfo(currentUser) {
+  //   let displaySearchedUser = document.querySelector('.client-details-section')
+  //   console.log('this.displaySearchedClientPage(currentUser)', this.displaySearchedClientPage(currentUser));
+  //   // displaySearchedUser.insertAdjacentHTML('beforeend', this.displaySearchedClientPage(currentUser))
+  // },
 
   displaySearchedClientPage(currentUser) {
     let managerClientHeader = document.querySelector('.manager-client-header');
@@ -180,7 +183,8 @@ let domUpdates = {
     console.log('currentUser', currentUser);
     bookings.forEach(booking => {
       let bookingDetails =
-        ` <ul class= "past-bookings">
+        ` <ul class= "past-bookings" id="${booking.id}">
+        <li class="booking-id">${booking.id}</li>
         <label class="label client-past-dates" for="date">Date:</label>
         <li>${booking.date}</li>
         <label class="label client-past-dates" for="room number">Room Number:</label>
