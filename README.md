@@ -3,7 +3,7 @@ Mod 2 Final solo project
 
 ## Setup
 
-Then install the library dependencies. Run:
+Install the library dependencies. Run:
 
 ```bash
 npm install
