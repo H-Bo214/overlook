@@ -9,7 +9,7 @@ Install the library dependencies. Run:
 npm install
 ```
 
-## How to View Your Code in Action
+## How to View the Code in Action
 
 In the terminal, run:
 
