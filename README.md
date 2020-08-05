@@ -51,19 +51,19 @@ This project will demonstrate understanding and implementation of ES6 classes, T
 
 ### Client page
 
-![Desktop Demo](https://media.giphy.com/media/XEDGUC2OcSBVHwUjzA/giphy.gif)
+![Desktop Demo](https://media.giphy.com/media/XEDGUC2OcSBVHwUjzA/giphy.gif)</br>
 
-![Desktop Demo](https://media.giphy.com/media/W6jIXf0YY1TmdHtJV7/giphy.gif)
+![Desktop Demo](https://media.giphy.com/media/W6jIXf0YY1TmdHtJV7/giphy.gif)</br>
 
-![Desktop Demo](https://media.giphy.com/media/VCPsJj1ewjrNY6g5AK/giphy.gif)
+![Desktop Demo](https://media.giphy.com/media/VCPsJj1ewjrNY6g5AK/giphy.gif)</br>
 
 
 ### Manager page
 
-![Desktop Demo](https://media.giphy.com/media/cmAy5ywIZI3UtQub9i/giphy.gif)
+![Desktop Demo](https://media.giphy.com/media/cmAy5ywIZI3UtQub9i/giphy.gif)</br>
 
-![Desktop Demo](https://media.giphy.com/media/RfpYx1eGa7A9Mo1xYW/giphy.gif)
+![Desktop Demo](https://media.giphy.com/media/RfpYx1eGa7A9Mo1xYW/giphy.gif)</br>
 
-![Desktop Demo](https://media.giphy.com/media/lpygXQb31b22TufEug/giphy.gif)
+![Desktop Demo](https://media.giphy.com/media/lpygXQb31b22TufEug/giphy.gif)</br>
 
-![Desktop Demo](https://media.giphy.com/media/W1aBV4TvOfUz5ItkTL/giphy.gif)
+
