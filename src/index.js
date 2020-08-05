@@ -33,7 +33,7 @@ function userLogin() {
     .then(response => response.json())
     .then(clientsData => loadClientPage(clientsData))
     .catch(errors => console.log(errors))
-};
+}
 
 function loadClientPage(clientsData) {
   let usernameLoginInput = document.querySelector('.username-login-input');
@@ -54,11 +54,11 @@ function loadClientPage(clientsData) {
 function fetchNeededData(verifiedClient, clientsData) {
   Promise.all([
     fetch('https://fe-apps.herokuapp.com/api/v1/overlook/1904/rooms/rooms')
-    .then(response => response.json()),
-    fetch('https://fe-apps.herokuapp.com/api/v1/overlook/1904/bookings/bookings').
-    then(response => response.json()),
+      .then(response => response.json()),
+    fetch('https://fe-apps.herokuapp.com/api/v1/overlook/1904/bookings/bookings')
+      .then(response => response.json()),
   ])
-  .then(data => reassignData(data[0].rooms, data[1].bookings, verifiedClient, clientsData))
+    .then(data => reassignData(data[0].rooms, data[1].bookings, verifiedClient, clientsData))
 }
 
 function reassignData(allRooms, allBookings, currentClient, clientsData) {

@@ -7,7 +7,7 @@ class Hotel {
     this.roomsAvailableToday = this.findRoomsAvailableToday();
     this.percentRoomAvailable = this.findOccupancyPercentage();
     this.totalRevenue = this.getTotalRevenue()
-  };
+  }
 
   findBookedRoomsByDate(date) {
     let allBookings = this.allBookings.allBookings;
@@ -17,16 +17,15 @@ class Hotel {
       }
       return bookedRooms;
     }, []);
-  };
+  }
 
   findAvailableRoomsByDate(date, filterSelection) {
     if (filterSelection === 'none') {
-     return this.findRoomsWithoutFilter(date);
+      return this.findRoomsWithoutFilter(date);
+    } else {
+      return this.findRoomsWithFilter(date, filterSelection)
     }
-     else {
-     return this.findRoomsWithFilter(date, filterSelection)
-    }
-  };
+  }
 
   findRoomsWithFilter(date, filterSelection) {
     let allRooms = this.allRooms.allRooms;
@@ -37,7 +36,7 @@ class Hotel {
       }
       return availableRooms;
     }, []);
-  };
+  }
 
   findRoomsWithoutFilter(date) {
     let allRooms = this.allRooms.allRooms;
@@ -48,7 +47,7 @@ class Hotel {
       }
       return availableRooms;
     }, []);
-  };
+  }
 
   findRoomsAvailableToday() {
     let allBookings = this.allBookings.allBookings;
@@ -56,7 +55,7 @@ class Hotel {
     let numRoomsBookedToday = allBookings.filter(booking => booking.date === this.date)
     let numAvailableRooms = (allRooms.length - numRoomsBookedToday.length)
     return numAvailableRooms;
-  };
+  }
 
   formatDates(date) {
     let dateArray = date.split('/');
@@ -85,7 +84,7 @@ class Hotel {
       allRooms.forEach(room => {
         if (room.number === match.roomNumber) {
           todaysTotal += room.costPerNight; 
-        };
+        }
       });
       return todaysTotal;
     }, 0);
@@ -99,19 +98,19 @@ class Hotel {
 
   deleteABooking(managerBookingID) {
     fetch('https://fe-apps.herokuapp.com/api/v1/overlook/1904/bookings/bookings', {
-        method: 'DELETE',
-        headers: {
-          'Content-Type': 'application/json'
-        },
-        body: JSON.stringify({
-          id: managerBookingID
-        })
+      method: 'DELETE',
+      headers: {
+        'Content-Type': 'application/json'
+      },
+      body: JSON.stringify({
+        id: managerBookingID
       })
+    })
       .then(response => response.json())
       .then(data => console.log(data))
       .catch(err => console.error(err))
   }
 
-};
+}
 
 export default Hotel;

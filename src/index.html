@@ -34,7 +34,7 @@
     </header>
     <section class="client-landing-parent hide">
       <aside class="left-aside">
-        <h2>My Bookings</h2>
+        <h2>My bookings</h2>
         <section class="client-past-bookings"></section>
         <h2>Total spent for your stays</h2>
         <section class="client-total-spent">
@@ -45,8 +45,9 @@
         <section class="client-selection-section">
           <section class="post-modal hide"></section>
           <section class="filter-rooms-parent">
-            <h3>Filter by room type</h3>
-            <select class="filter-input" name="Select room type">
+            <h2>Filter by room type</h2>
+            <label class="label" for="room-type-select">Room type</label>
+            <select class="filter-input" name="rooms" id="room-type-select">
               <option value="none">none</option>
               <option>residential suite</option>
               <option>suite</option>
@@ -57,7 +58,7 @@
           <section class="client-search-parent">
             <h2>Search for availability</h2>
             <section class="client-search">
-              <label class="label" for="date">Please enter a date:</label>
+              <label class="label" for="client-date">Please enter a date:</label>
               <input class="client-date-selection" id="client-date" type="text" placeholder="YYYY/MM/DD" size="10"
                 maxlength="10">
               <button class="client-search-room-button" type="button" name="Search available rooms">Search available
@@ -81,9 +82,9 @@
     </header>
     <section class="manager-landing-parent hide">
       <aside class="manager-left-aside">
-        <h2>Room Availability</h2>
+        <h2>Room availability</h2>
         <section class="rooms-available"></section>
-        <h2>Current Occupancy</h2>
+        <h2>Current occupancy</h2>
         <section class="current-occupancy"></section>
         <h2>Total revenue today</h2>
         <section class="total-revenue-today">
@@ -93,44 +94,45 @@
           <h2 class="searched-client-welcome-message"></h2>
         </section>
         <aside class="manager-search-left-aside hide">
-          <h2>Bookings</h2>
+          <h2>Client bookings</h2>
           <section class="searched-client-past-bookings"></section>
-          <h2>Total spent for your stays</h2>
+          <h2>Total spent</h2>
           <section class="searched-client-total-spent">
-            <p>$1000</p>
+            <p></p>
           </section>
         </aside>
       </aside>
       <section class="manager-right-section">
         <section class="manager-selection-section">
           <section class="manager-client-search-parent">
-            <h2>Client Search</h2>
+            <h2>Client search</h2>
             <form class="client-search-section">
-              <label class="label" for="Client Name">Client name:</label>
-              <input class="manager-client-name-input" type="text" placeholder="Enter name">
+              <label class="label" for="client-name">Client name:</label>
+              <input class="manager-client-name-input" type="text" placeholder="Enter name" id="client-name">
               <button class="manager-client-search-button" type="button" name="Search">Search client</button>
             </form>
           </section>
           <section class="delete-booking-parent">
             <h2>Delete a booking</h2>
             <form class="delete-booking-section">
-              <label class="label" for="Booking Id">Booking ID:</label>
-              <input class="booking-id-input" type="text" placeholder="Enter booking Id">
-              <button class="delete-booking-button" type="button" name="Delete booking">Delete Booking</button>
+              <label class="label" for="booking-id">Booking ID:</label>
+              <input class="booking-id-input" type="text" placeholder="Enter booking Id" id="booking-id">
+              <button class="delete-booking-button" type="button" name="Delete booking">Delete booking</button>
             </form>
           </section>
         </section>
         <p class="no-client-name-message hide">🔺 Please enter a client name.</p>
         <p class="no-bookingID-message hide">🔺 Please enter a booking id.</p>
         <p class="cannot-delete-booking-message hide">🔺 You cannot delete a prior booking.</p>
-        <h2>Client History</h2>
+        <!-- <h2>Client history</h2> -->
         <section class="client-details-section">
           <section class="manager-client-landing-parent hide">
             <section class="manager-search-right-section">
               <section class="searched-client-selection-section">
                 <section class="searched-filter-rooms-parent">
-                  <h3>Filter by room type</h3>
-                  <select class="searched-filter-input" name="Select room type">
+                  <h2>Filter by room type</h2>
+                  <label class="label" for="room-type">Room type</label>
+                  <select class="searched-filter-input" name="Select room type" id="room-type">
                     <option value="none">none</option>
                     <option>residential suite</option>
                     <option>suite</option>
@@ -141,7 +143,7 @@
                 <section class="searched-client-search-parent">
                   <h2>Search for availability</h2>
                   <section class="manager-client-search">
-                    <label class="label" for="date">Please enter a date:</label>
+                    <label class="label" for="manager-client-date">Please enter a date:</label>
                     <input class="manager-client-date-selection" id="manager-client-date" type="text"
                       placeholder="YYYY/MM/DD" size="10" maxlength="10">
                     <button class="manager-client-search-room-button" type="button" name="Search available rooms">Search
@@ -155,7 +157,7 @@
                 </section>
               </section>
               <p class="manager-need-date-message hide">🔺 Please enter a date.</p>
-              <h2>Available Rooms</h2>
+              <h2>Available rooms</h2>
               <section class="searched-post-modal hide"></section>
               <section class="searched-client-available-rooms"></section>
             </section>

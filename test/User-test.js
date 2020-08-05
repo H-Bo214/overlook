@@ -1,24 +1,26 @@
-import { expect } from 'chai';
+import {
+  expect
+} from 'chai';
 import User from '../src/User';
 
 describe('User', function () {
-  let user, user2, myBookings, myRooms, myMoneySpent, allBookings, allRooms, myBookingDetails, notMyBookings, notMyRooms;
+  let user, user2, myBookings, myRooms, allBookings, allRooms, myBookingDetails, notMyBookings, notMyRooms;
 
   beforeEach(function () {
     myBookings = [{
-        "id": "5fwrgu4i7k55hl6sz",
-        "userID": 20,
-        "date": "2020/04/22",
-        "roomNumber": 15,
-        "roomServiceCharges": []
-      },
-      {
-        "id": "5fwrgu4i7k55hl6t5",
-        "userID": 20,
-        "date": "2020/01/24",
-        "roomNumber": 24,
-        "roomServiceCharges": []
-      }
+      "id": "5fwrgu4i7k55hl6sz",
+      "userID": 20,
+      "date": "2020/04/22",
+      "roomNumber": 15,
+      "roomServiceCharges": []
+    },
+    {
+      "id": "5fwrgu4i7k55hl6t5",
+      "userID": 20,
+      "date": "2020/01/24",
+      "roomNumber": 24,
+      "roomServiceCharges": []
+    }
     ];
 
     notMyBookings = [{
@@ -35,123 +37,121 @@ describe('User', function () {
       "roomNumber": 7,
       "roomServiceCharges": []
     },
-  ];
+    ];
 
-  notMyRooms = [ {
-    "number": 25,
-    "roomType": "suite",
-    "bidet": false,
-    "bedSize": "full",
-    "numBeds": 2,
-    "costPerNight": 500
-  },
-  {
-    "number": 12,
-    "roomType": "single room",
-    "bidet": false,
-    "bedSize": "king",
-    "numBeds": 1,
-    "costPerNight": 491.14
-  },]
+    notMyRooms = [{
+      "number": 25,
+      "roomType": "suite",
+      "bidet": false,
+      "bedSize": "full",
+      "numBeds": 2,
+      "costPerNight": 500
+    },
+    {
+      "number": 12,
+      "roomType": "single room",
+      "bidet": false,
+      "bedSize": "king",
+      "numBeds": 1,
+      "costPerNight": 491.14
+    },
+    ]
     myRooms = [{
-        "number": 15,
-        "roomType": "residential suite",
-        "bidet": true,
-        "bedSize": "queen",
-        "numBeds": 1,
-        "costPerNight": 500
-      },
-      {
-        "number": 24,
-        "roomType": "suite",
-        "bidet": false,
-        "bedSize": "full",
-        "numBeds": 2,
-        "costPerNight": 500
-      },
+      "number": 15,
+      "roomType": "residential suite",
+      "bidet": true,
+      "bedSize": "queen",
+      "numBeds": 1,
+      "costPerNight": 500
+    },
+    {
+      "number": 24,
+      "roomType": "suite",
+      "bidet": false,
+      "bedSize": "full",
+      "numBeds": 2,
+      "costPerNight": 500
+    },
     ];
 
     allBookings = [{
-        "id": "5fwrgu4i7k55hl6sz",
-        "userID": 20,
-        "date": "2020/04/22",
-        "roomNumber": 15,
-        "roomServiceCharges": []
-      },
-      {
-        "id": "5fwrgu4i7k55hl6t5",
-        "userID": 20,
-        "date": "2020/01/24",
-        "roomNumber": 24,
-        "roomServiceCharges": []
-      },
-      {
-        "id": "5fwrgu4i7k55hl6t6",
-        "userID": 13,
-        "date": "2020/01/10",
-        "roomNumber": 12,
-        "roomServiceCharges": []
-      },
-      {
-        "id": "5fwrgu4i7k55hl6t7",
-        "userID": 16,
-        "date": "2020/02/16",
-        "roomNumber": 7,
-        "roomServiceCharges": []
-      },
-      {
-        "id": "5fwrgu4i7k55hl6t8",
-        "userID": 1,
-        "date": "2020/02/05",
-        "roomNumber": 12,
-        "roomServiceCharges": []
-      },
+      "id": "5fwrgu4i7k55hl6sz",
+      "userID": 20,
+      "date": "2020/04/22",
+      "roomNumber": 15,
+      "roomServiceCharges": []
+    },
+    {
+      "id": "5fwrgu4i7k55hl6t5",
+      "userID": 20,
+      "date": "2020/01/24",
+      "roomNumber": 24,
+      "roomServiceCharges": []
+    },
+    {
+      "id": "5fwrgu4i7k55hl6t6",
+      "userID": 13,
+      "date": "2020/01/10",
+      "roomNumber": 12,
+      "roomServiceCharges": []
+    },
+    {
+      "id": "5fwrgu4i7k55hl6t7",
+      "userID": 16,
+      "date": "2020/02/16",
+      "roomNumber": 7,
+      "roomServiceCharges": []
+    },
+    {
+      "id": "5fwrgu4i7k55hl6t8",
+      "userID": 1,
+      "date": "2020/02/05",
+      "roomNumber": 12,
+      "roomServiceCharges": []
+    },
     ];
 
     allRooms = [{
-        "number": 15,
-        "roomType": "residential suite",
-        "bidet": true,
-        "bedSize": "queen",
-        "numBeds": 1,
-        "costPerNight": 500
-      },
-      {
-        "number": 24,
-        "roomType": "suite",
-        "bidet": false,
-        "bedSize": "full",
-        "numBeds": 2,
-        "costPerNight": 500
-      },
-      {
-        "number": 12,
-        "roomType": "single room",
-        "bidet": false,
-        "bedSize": "king",
-        "numBeds": 1,
-        "costPerNight": 491.14
-      },
-      {
-        "number": 7,
-        "roomType": "single room",
-        "bidet": false,
-        "bedSize": "queen",
-        "numBeds": 1,
-        "costPerNight": 429.44
-      },
-      {
-        "number": 19,
-        "roomType": "single room",
-        "bidet": true,
-        "bedSize": "queen",
-        "numBeds": 2,
-        "costPerNight": 340.17
-      },
+      "number": 15,
+      "roomType": "residential suite",
+      "bidet": true,
+      "bedSize": "queen",
+      "numBeds": 1,
+      "costPerNight": 500
+    },
+    {
+      "number": 24,
+      "roomType": "suite",
+      "bidet": false,
+      "bedSize": "full",
+      "numBeds": 2,
+      "costPerNight": 500
+    },
+    {
+      "number": 12,
+      "roomType": "single room",
+      "bidet": false,
+      "bedSize": "king",
+      "numBeds": 1,
+      "costPerNight": 491.14
+    },
+    {
+      "number": 7,
+      "roomType": "single room",
+      "bidet": false,
+      "bedSize": "queen",
+      "numBeds": 1,
+      "costPerNight": 429.44
+    },
+    {
+      "number": 19,
+      "roomType": "single room",
+      "bidet": true,
+      "bedSize": "queen",
+      "numBeds": 2,
+      "costPerNight": 340.17
+    },
     ];
-
-    myMoneySpent = "1000.00";
-
 
     myBookingDetails = [{
       "date": "2020/04/22",

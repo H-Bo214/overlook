@@ -48,15 +48,15 @@ let domUpdates = {
     let passwordLoginInput = document.querySelector('.password-login-input');
     let loginErrorMessage = document.querySelector('.login-error-msg');
     loginErrorMessage.classList.remove('hide')
-    usernameLoginInput.addEventListener('focus', (event) => loginErrorMessage.classList.add('hide'));
-    passwordLoginInput.addEventListener('focus', (event) => loginErrorMessage.classList.add('hide'));
+    usernameLoginInput.addEventListener('focus', () => loginErrorMessage.classList.add('hide'));
+    passwordLoginInput.addEventListener('focus', () => loginErrorMessage.classList.add('hide'));
   },
 
   noDateEnteredMessage() {
     let clientDateInput = document.getElementById('client-date');
     let needDateMessage = document.querySelector('.need-date-message');
     needDateMessage.classList.remove('hide');
-    clientDateInput.addEventListener('focus', (event) => {
+    clientDateInput.addEventListener('focus', () => {
       needDateMessage.classList.add('hide');
     })
   },
@@ -128,14 +128,13 @@ let domUpdates = {
 
   displaySearchedWelcomeMessage(currentUser) {
     let currentClient = document.querySelector('.searched-client-welcome-message');
-    currentClient.innerHTML = `Client Name: ${currentUser.name}`;
+    currentClient.innerHTML = `Client Name: <span class="searched-client-name">${currentUser.name}</span>`;
   },
 
   displaySearchedClientBookings(currentUser) {
     let myBookings = document.querySelector('.searched-client-past-bookings');
     let bookings = currentUser.getMyBookings();
     myBookings.innerText = '';
-    console.log('currentUser', currentUser);
     bookings.forEach(booking => {
       let bookingDetails =
         ` <section class= "searched-past-bookings" id="${booking.id}">
@@ -202,7 +201,7 @@ let domUpdates = {
     let managerClientDateInput = document.getElementById('manager-client-date')
     let managerNeedDateMessage = document.querySelector('.manager-need-date-message');
     managerNeedDateMessage.classList.remove('hide');
-    managerClientDateInput.addEventListener('focus', (event) => {
+    managerClientDateInput.addEventListener('focus', () => {
       managerNeedDateMessage.classList.add('hide');
     })
   },
@@ -211,7 +210,7 @@ let domUpdates = {
     let managerClientNameInput = document.querySelector('.manager-client-name-input')
     let needClientNameMessage = document.querySelector('.no-client-name-message');
     needClientNameMessage.classList.remove('hide');
-    managerClientNameInput.addEventListener('focus', (event) => {
+    managerClientNameInput.addEventListener('focus', () => {
       needClientNameMessage.classList.add('hide');
     })
   },
@@ -220,7 +219,7 @@ let domUpdates = {
     let bookingIDInput = document.querySelector('.booking-id-input');
     let cannotDeleteMessage = document.querySelector('.cannot-delete-booking-message');
     cannotDeleteMessage.classList.remove('hide')
-    bookingIDInput.addEventListener('focus', (event) => {
+    bookingIDInput.addEventListener('focus', () => {
       cannotDeleteMessage.classList.add('hide');
     })
   },
@@ -229,38 +228,10 @@ let domUpdates = {
     let bookingIDInput = document.querySelector('.booking-id-input');
     let noBookingIDMessage = document.querySelector('.no-bookingID-message');
     noBookingIDMessage.classList.remove('hide')
-    bookingIDInput.addEventListener('focus', (event) => {
+    bookingIDInput.addEventListener('focus', () => {
       noBookingIDMessage.classList.add('hide');
     })
   },
-
-  //>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
-  // postModal(postResult) {
-  //   let postModal = document.querySelector('.post-modal');
-  //   let clientSelectionSection = document.querySelector('.client-selection-section');
-  //   clientSelectionSection.classList.add('hide')
-  //   postModal.classList.remove('hide');
-  //   postModal.innerHTML = `
-  //     <div class="close-modal-parent">  
-  //     <p>Thank you for booking!</p>
-  //       <button class="close-modal" type ="button" name="close thank you message"data-id="close">X</button>
-  //     </div>
-  //       `
-  //   // let closeModal = document.querySelector('.close-modal');
-  //   // closeModal.addEventListener('click', function() {
-  //   //   let postModal = document.querySelector('.post-modal');
-  //   //   postModal.classList.add('hide');
-  //   // })
-  // },
-
-  // closeMessage() {
-  //   let postModal = document.querySelector('.post-modal');
-  //   let clientSelectionSection = document.querySelector('.client-selection-section');
-  //   postModal.classList.add('hide');
-  //   clientSelectionSection.classList.remove('hide')
-
-  // }
-
 
 };
 
