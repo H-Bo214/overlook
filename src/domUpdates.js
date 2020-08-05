@@ -128,14 +128,13 @@ let domUpdates = {
 
   displaySearchedWelcomeMessage(currentUser) {
     let currentClient = document.querySelector('.searched-client-welcome-message');
-    currentClient.innerHTML = `Client Name: ${currentUser.name}`;
+    currentClient.innerHTML = `Client Name: <span class="searched-client-name">${currentUser.name}</span>`;
   },
 
   displaySearchedClientBookings(currentUser) {
     let myBookings = document.querySelector('.searched-client-past-bookings');
     let bookings = currentUser.getMyBookings();
     myBookings.innerText = '';
-    console.log('currentUser', currentUser);
     bookings.forEach(booking => {
       let bookingDetails =
         ` <section class= "searched-past-bookings" id="${booking.id}">
@@ -233,34 +232,6 @@ let domUpdates = {
       noBookingIDMessage.classList.add('hide');
     })
   },
-
-  //>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
-  // postModal(postResult) {
-  //   let postModal = document.querySelector('.post-modal');
-  //   let clientSelectionSection = document.querySelector('.client-selection-section');
-  //   clientSelectionSection.classList.add('hide')
-  //   postModal.classList.remove('hide');
-  //   postModal.innerHTML = `
-  //     <div class="close-modal-parent">  
-  //     <p>Thank you for booking!</p>
-  //       <button class="close-modal" type ="button" name="close thank you message"data-id="close">X</button>
-  //     </div>
-  //       `
-  //   // let closeModal = document.querySelector('.close-modal');
-  //   // closeModal.addEventListener('click', function() {
-  //   //   let postModal = document.querySelector('.post-modal');
-  //   //   postModal.classList.add('hide');
-  //   // })
-  // },
-
-  // closeMessage() {
-  //   let postModal = document.querySelector('.post-modal');
-  //   let clientSelectionSection = document.querySelector('.client-selection-section');
-  //   postModal.classList.add('hide');
-  //   clientSelectionSection.classList.remove('hide')
-
-  // }
-
 
 };
 
