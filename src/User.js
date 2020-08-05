@@ -14,19 +14,19 @@ class User {
     }, 0);
     totalSpent = Number(totalSpent.toFixed(2))
     return totalSpent;
-  };
+  }
 
   findMyRooms(allRooms) {
     let myRooms = allRooms.reduce((allMyRooms, room) => {
       this.allClientBookings.forEach(booking => {
         if (booking.roomNumber === room.number) {
           allMyRooms.push(room);
-        };
+        }
       });
       return allMyRooms;
     }, []);
     return myRooms;
-  };
+  }
 
   getMyBookings() {
     let myStays = this.allClientBookings.reduce((allStays, booking) => {
@@ -38,26 +38,26 @@ class User {
       return allStays;
     }, []);
     return myStays;
-  };
+  }
 
   postBooking(room, dates) {
     let roomNumbers = parseInt(room)
     fetch('https://fe-apps.herokuapp.com/api/v1/overlook/1904/bookings/bookings', {
-        method: 'POST',
-        headers: {
-          'Content-Type': 'application/json'
-        },
-        body: JSON.stringify({
-          userID: this.id,
-          date: dates,
-          roomNumber: roomNumbers
-        })
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json'
+      },
+      body: JSON.stringify({
+        userID: this.id,
+        date: dates,
+        roomNumber: roomNumbers
       })
+    })
       .then(response => response.json())
       .then(data => console.log(data))
       .catch(err => console.error(err))
   }
 
-};
+}
 
 export default User;

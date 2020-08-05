@@ -48,15 +48,15 @@ let domUpdates = {
     let passwordLoginInput = document.querySelector('.password-login-input');
     let loginErrorMessage = document.querySelector('.login-error-msg');
     loginErrorMessage.classList.remove('hide')
-    usernameLoginInput.addEventListener('focus', (event) => loginErrorMessage.classList.add('hide'));
-    passwordLoginInput.addEventListener('focus', (event) => loginErrorMessage.classList.add('hide'));
+    usernameLoginInput.addEventListener('focus', () => loginErrorMessage.classList.add('hide'));
+    passwordLoginInput.addEventListener('focus', () => loginErrorMessage.classList.add('hide'));
   },
 
   noDateEnteredMessage() {
     let clientDateInput = document.getElementById('client-date');
     let needDateMessage = document.querySelector('.need-date-message');
     needDateMessage.classList.remove('hide');
-    clientDateInput.addEventListener('focus', (event) => {
+    clientDateInput.addEventListener('focus', () => {
       needDateMessage.classList.add('hide');
     })
   },
@@ -201,7 +201,7 @@ let domUpdates = {
     let managerClientDateInput = document.getElementById('manager-client-date')
     let managerNeedDateMessage = document.querySelector('.manager-need-date-message');
     managerNeedDateMessage.classList.remove('hide');
-    managerClientDateInput.addEventListener('focus', (event) => {
+    managerClientDateInput.addEventListener('focus', () => {
       managerNeedDateMessage.classList.add('hide');
     })
   },
@@ -210,7 +210,7 @@ let domUpdates = {
     let managerClientNameInput = document.querySelector('.manager-client-name-input')
     let needClientNameMessage = document.querySelector('.no-client-name-message');
     needClientNameMessage.classList.remove('hide');
-    managerClientNameInput.addEventListener('focus', (event) => {
+    managerClientNameInput.addEventListener('focus', () => {
       needClientNameMessage.classList.add('hide');
     })
   },
@@ -219,7 +219,7 @@ let domUpdates = {
     let bookingIDInput = document.querySelector('.booking-id-input');
     let cannotDeleteMessage = document.querySelector('.cannot-delete-booking-message');
     cannotDeleteMessage.classList.remove('hide')
-    bookingIDInput.addEventListener('focus', (event) => {
+    bookingIDInput.addEventListener('focus', () => {
       cannotDeleteMessage.classList.add('hide');
     })
   },
@@ -228,7 +228,7 @@ let domUpdates = {
     let bookingIDInput = document.querySelector('.booking-id-input');
     let noBookingIDMessage = document.querySelector('.no-bookingID-message');
     noBookingIDMessage.classList.remove('hide')
-    bookingIDInput.addEventListener('focus', (event) => {
+    bookingIDInput.addEventListener('focus', () => {
       noBookingIDMessage.classList.add('hide');
     })
   },
